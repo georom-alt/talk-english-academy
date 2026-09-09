@@ -104,7 +104,7 @@ const translations = {
         "contact_title": "Bắt Đầu Hành Trình Tiếng Anh Của Bạn",
         "contact_intro": "Bạn có thể quét mã Zalo của An để được hỗ trợ bằng tiếng Việt hoặc kết nối trực tiếp với Teacher George.",
         "admin_role": "Cố vấn Thành công Học viên",
-        "admin_title": "An – Cố Vấn Thành Công Học Viên",
+        "admin_title": "An Nguyen Tu Bui – Cố Vấn Thành Công Học Viên",
         "admin_body": "An hỗ trợ bằng tiếng Việt về chương trình, đăng ký, lịch học và các câu hỏi dành cho học viên.",
         "admin_service_1": "Thông tin khóa học",
         "admin_service_2": "Đăng ký",
@@ -112,9 +112,11 @@ const translations = {
         "admin_service_4": "Hỗ trợ tiếng Việt",
         "an_zalo_title": "Quét mã để liên hệ An về đăng ký khóa học",
         "an_zalo_instruction": "Mở Zalo và quét mã để An tư vấn chương trình, đăng ký và lịch học bằng tiếng Việt.",
+        "an_zalo_direct": "Nhắn Tin Cho An Trên Zalo",
         "an_zalo_help": "An có thể hỗ trợ thông tin khóa học, đăng ký và lịch học.",
         "george_contact_title": "Quét mã để liên hệ Teacher George",
         "george_contact_instruction": "Dành cho câu hỏi về phương pháp học, Business English và đào tạo doanh nghiệp.",
+        "george_zalo_direct": "Nhắn Tin Cho Teacher George Trên Zalo",
         "teacher_role": "Người sáng lập & Huấn luyện viên giao tiếp tiếng Anh chính",
         "teacher_title": "Teacher George",
         "teacher_body": "Kết nối với George để hỏi về phương pháp học, Business English hoặc đào tạo doanh nghiệp.",
@@ -182,7 +184,7 @@ const translations = {
         "faq_5_a": "Bạn cần thiết bị có internet, tai nghe hoặc loa, microphone và một nơi tương đối yên tĩnh.",
         "form_label": "Đăng ký buổi học thử miễn phí",
         "form_title": "Cho Chúng Tôi Biết Mục Tiêu Của Bạn",
-        "form_intro": "Điền thông tin, sau đó sao chép nội dung đăng ký để gửi cho An qua Zalo. Hệ thống gửi tự động sẽ được bổ sung sau khi website ra mắt.",
+        "form_intro": "Điền thông tin, sau đó chọn gửi email cho An hoặc sao chép nội dung để gửi qua Zalo.",
         "form_name": "Họ và tên",
         "form_contact": "Email hoặc số Zalo",
         "form_zalo": "Số điện thoại / Zalo",
@@ -213,11 +215,13 @@ const translations = {
         "form_message": "Tin nhắn",
         "form_message_placeholder": "Bạn có thể cho chúng tôi biết thêm về mục tiêu hoặc câu hỏi của bạn.",
         "form_submit": "Sao Chép Đăng Ký Cho Zalo",
+        "form_email_an": "Gửi Đăng Ký Qua Email",
+        "form_email_both": "Gửi Email Cho An Và George",
         "form_copy": "Sao Chép Nội Dung",
         "form_opened": "Đang gửi đăng ký...",
         "form_copied": "Đã sao chép nội dung đăng ký. Bạn có thể dán vào email hoặc Zalo.",
         "form_copy_failed": "Không thể sao chép tự động. Vui lòng chọn và sao chép nội dung thủ công.",
-        "form_note": "Biểu mẫu hiện chưa tự động gửi. Sau khi sao chép, hãy quét Zalo của An và dán nội dung vào tin nhắn.",
+        "form_note": "Nút email sẽ mở ứng dụng email của bạn với nội dung đã điền sẵn. Hoặc sao chép nội dung và gửi cho An qua Zalo.",
         "form_sending": "Đang chuẩn bị nội dung...",
         "form_success": "Đã sao chép nội dung đăng ký. Bây giờ hãy quét Zalo của An và dán nội dung vào tin nhắn.",
         "form_activation": "Đăng ký đã được gửi. George cần xác nhận email kích hoạt FormSubmit lần đầu tiên để bắt đầu nhận biểu mẫu.",
@@ -266,6 +270,26 @@ const translations = {
         "price_private_item_2": "Lịch học linh hoạt hơn",
         "price_private_item_3": "Phản hồi chuyên sâu",
         "pricing_note": "Học phí được hiển thị bằng đồng Việt Nam và có thể thay đổi. Học viên sẽ được xác nhận mức phí trước khi đăng ký.",
+        "trial_item_1": "Đánh giá trình độ ngắn",
+        "trial_item_2": "Luyện hội thoại thực tế",
+        "trial_item_3": "Phản hồi và kế hoạch học đề xuất",
+        "schedule_label": "Lịch học linh hoạt",
+        "schedule_title": "Thời Gian Học Tại Việt Nam",
+        "schedule_intro": "Học trực tiếp với Teacher George từ Canada. Khung giờ chính được thiết kế thuận tiện cho học viên tại Việt Nam.",
+        "schedule_morning_title": "Buổi sáng",
+        "schedule_morning_time": "Khoảng 5:30–10:30",
+        "schedule_morning_body": "Tương ứng với buổi tối tại Canada. Buổi học cụ thể được xác nhận khi đăng ký.",
+        "schedule_evening_title": "Buổi tối",
+        "schedule_evening_time": "Khoảng 17:30–21:30",
+        "schedule_evening_body": "Tương ứng với buổi sáng tại Canada. Có thể thay đổi một giờ theo mùa.",
+        "schedule_note": "Canada sử dụng giờ mùa hè. An và George sẽ xác nhận giờ Việt Nam chính xác trước mỗi khóa học.",
+        "languages_spoken": "Ngôn ngữ:",
+        "faq_6_q": "Thông tin đăng ký của tôi được sử dụng như thế nào?",
+        "faq_6_a": "Thông tin chỉ được An và George sử dụng để liên hệ về buổi học thử, lịch học và chương trình. Talk English không bán thông tin cá nhân.",
+        "faq_7_q": "Nếu tôi cần đổi lịch thì sao?",
+        "faq_7_a": "Hãy liên hệ với An hoặc George càng sớm càng tốt. Lịch thay thế tùy thuộc vào thời gian còn trống và sẽ được xác nhận bằng văn bản.",
+        "faq_8_q": "Thanh toán và hoàn tiền được thực hiện như thế nào?",
+        "faq_8_a": "Buổi học thử miễn phí. Học phí, phương thức thanh toán, điều kiện đổi lịch và hoàn tiền của khóa học trả phí sẽ được xác nhận bằng văn bản trước khi bạn thanh toán.",
         "stories_label": "Câu chuyện học viên",
         "stories_title": "Hành Trình Của Sự Tự Tin",
         "stories_intro": "Mỗi học viên bắt đầu với một mục tiêu khác nhau. Đây là những trải nghiệm thật từ những người đã quyết định bắt đầu nói tiếng Anh.",
@@ -394,7 +418,7 @@ const translations = {
         "contact_title": "Start Your English Journey",
         "contact_intro": "Scan An’s Zalo code for support in Vietnamese or connect directly with Teacher George.",
         "admin_role": "Student Success Advisor",
-        "admin_title": "An – Student Success Advisor",
+        "admin_title": "An Nguyen Tu Bui – Student Success Advisor",
         "admin_body": "An provides Vietnamese-language help with programs, registration, class schedules, and student questions.",
         "admin_service_1": "Course information",
         "admin_service_2": "Registration",
@@ -402,9 +426,11 @@ const translations = {
         "admin_service_4": "Vietnamese support",
         "an_zalo_title": "Scan to contact An about course registration",
         "an_zalo_instruction": "Open Zalo and scan the QR code for help with programs, registration, and class schedules in Vietnamese.",
+        "an_zalo_direct": "Message An on Zalo",
         "an_zalo_help": "An can help with course information, registration, and class schedules.",
         "george_contact_title": "Scan to contact Teacher George",
         "george_contact_instruction": "For questions about the teaching method, Business English, and corporate training.",
+        "george_zalo_direct": "Message Teacher George on Zalo",
         "teacher_role": "Founder & Lead English Communication Coach",
         "teacher_title": "Teacher George",
         "teacher_body": "Contact George about the teaching method, Business English, or corporate training.",
@@ -472,7 +498,7 @@ const translations = {
         "faq_5_a": "You need an internet-connected device, headphones or speakers, a microphone, and a reasonably quiet place.",
         "form_label": "Book a free trial lesson",
         "form_title": "Tell Us About Your English Goal",
-        "form_intro": "Complete the form and press Send Registration. Your information will be sent directly to George; no Gmail or email app is required.",
+        "form_intro": "Complete the form, then email An or copy the registration message and send it through Zalo.",
         "form_name": "Full name",
         "form_contact": "Email or Zalo number",
         "form_zalo": "Phone / Zalo number",
@@ -503,11 +529,13 @@ const translations = {
         "form_message": "Message",
         "form_message_placeholder": "Tell us your current level and preferred learning time.",
         "form_submit": "Copy Registration for Zalo",
+        "form_email_an": "Email Registration to An",
+        "form_email_both": "Email An and George",
         "form_copy": "Copy Message",
         "form_opened": "Sending registration...",
         "form_copied": "The registration message was copied. You can paste it into email or Zalo.",
         "form_copy_failed": "Automatic copying was unavailable. Please select and copy the message manually.",
-        "form_note": "Your information is used only to contact you about lessons. No Gmail is required.",
+        "form_note": "The email button opens your email app with the registration details filled in. You can also copy the message and send it to An through Zalo.",
         "form_sending": "Preparing registration...",
         "form_success": "Thank you! Your registration was sent. An or George will contact you within 24 hours.",
         "form_activation": "The registration was submitted. George must confirm the one-time FormSubmit activation email before new forms can be delivered.",
@@ -556,6 +584,26 @@ const translations = {
         "price_private_item_2": "More flexible scheduling",
         "price_private_item_3": "Detailed individual feedback",
         "pricing_note": "Prices are shown in Vietnamese dong and may change. Every student will receive confirmation of the fee before enrolling.",
+        "trial_item_1": "A short level assessment",
+        "trial_item_2": "Practical conversation practice",
+        "trial_item_3": "Feedback and a recommended learning plan",
+        "schedule_label": "Flexible scheduling",
+        "schedule_title": "Class Times in Vietnam",
+        "schedule_intro": "Learn live with Teacher George in Canada. The main time windows are designed for students in Vietnam.",
+        "schedule_morning_title": "Morning",
+        "schedule_morning_time": "Approximately 5:30–10:30 AM",
+        "schedule_morning_body": "Corresponding to evenings in Canada. Your exact lesson time is confirmed during registration.",
+        "schedule_evening_title": "Evening",
+        "schedule_evening_time": "Approximately 5:30–9:30 PM",
+        "schedule_evening_body": "Corresponding to mornings in Canada. Times may shift by one hour seasonally.",
+        "schedule_note": "Canada observes daylight saving time. An and George will confirm the exact Vietnam time before each course.",
+        "languages_spoken": "Languages spoken:",
+        "faq_6_q": "How will my registration information be used?",
+        "faq_6_a": "An and George use it only to contact you about the trial lesson, scheduling, and programs. Talk English does not sell personal information.",
+        "faq_7_q": "What if I need to reschedule?",
+        "faq_7_a": "Contact An or George as early as possible. Replacement times depend on availability and will be confirmed in writing.",
+        "faq_8_q": "How do payment and refunds work?",
+        "faq_8_a": "The trial lesson is free. Tuition, payment methods, rescheduling, and refund conditions for paid courses will be confirmed in writing before you pay.",
         "stories_label": "Student stories",
         "stories_title": "Journeys of Confidence",
         "stories_intro": "Every learner begins with a different goal. These are genuine experiences from people who decided to start speaking English.",
@@ -692,12 +740,43 @@ document.querySelectorAll('.zalo-qr').forEach((image) => {
 const enquiryForm = document.getElementById('enquiry-form');
 const formStatus = document.getElementById('form-status');
 const registrationSubmit = document.getElementById('registration-submit');
+const registrationEmail = document.getElementById('registration-email');
 
 function showFormStatus(key, state = '') {
     if (!formStatus) return;
     const language = document.documentElement.lang || 'vi';
     formStatus.textContent = translations[language]?.[key] || translations.vi[key] || '';
     formStatus.dataset.state = state;
+}
+
+function buildRegistrationMessage() {
+    const language = document.documentElement.lang || 'vi';
+    const formData = new FormData(enquiryForm);
+    const labels = language === 'en'
+        ? {
+            heading: 'Talk English – Free Trial Lesson Registration',
+            name: 'Name', phone: 'Phone / Zalo', email: 'Email',
+            level: 'Current level', goal: 'Learning goal',
+            time: 'Preferred class time', message: 'Message'
+          }
+        : {
+            heading: 'Talk English – Đăng Ký Buổi Học Thử Miễn Phí',
+            name: 'Họ và tên', phone: 'Điện thoại / Zalo', email: 'Email',
+            level: 'Trình độ hiện tại', goal: 'Mục tiêu học',
+            time: 'Thời gian phù hợp', message: 'Tin nhắn'
+          };
+
+    return [
+        labels.heading,
+        '',
+        `${labels.name}: ${formData.get('name') || ''}`,
+        `${labels.phone}: ${formData.get('phone_zalo') || ''}`,
+        `${labels.email}: ${formData.get('email') || (language === 'en' ? 'Not provided' : 'Không cung cấp')}`,
+        `${labels.level}: ${formData.get('current_level') || ''}`,
+        `${labels.goal}: ${formData.get('learning_goal') || ''}`,
+        `${labels.time}: ${formData.get('preferred_time') || ''}`,
+        `${labels.message}: ${formData.get('message') || (language === 'en' ? 'None' : 'Không có')}`
+    ].join('\n');
 }
 
 if (enquiryForm) {
@@ -711,33 +790,7 @@ if (enquiryForm) {
 
         const language = document.documentElement.lang || 'vi';
         const originalButtonText = registrationSubmit?.textContent || '';
-        const formData = new FormData(enquiryForm);
-
-        const labels = language === 'en'
-            ? {
-                heading: 'Talk English – Free Trial Lesson Registration',
-                name: 'Name', phone: 'Phone / Zalo', email: 'Email',
-                level: 'Current level', goal: 'Learning goal',
-                time: 'Preferred class time', message: 'Message'
-              }
-            : {
-                heading: 'Talk English – Đăng Ký Buổi Học Thử Miễn Phí',
-                name: 'Họ và tên', phone: 'Điện thoại / Zalo', email: 'Email',
-                level: 'Trình độ hiện tại', goal: 'Mục tiêu học',
-                time: 'Thời gian phù hợp', message: 'Tin nhắn'
-              };
-
-        const registrationText = [
-            labels.heading,
-            '',
-            `${labels.name}: ${formData.get('name') || ''}`,
-            `${labels.phone}: ${formData.get('phone_zalo') || ''}`,
-            `${labels.email}: ${formData.get('email') || (language === 'en' ? 'Not provided' : 'Không cung cấp')}`,
-            `${labels.level}: ${formData.get('current_level') || ''}`,
-            `${labels.goal}: ${formData.get('learning_goal') || ''}`,
-            `${labels.time}: ${formData.get('preferred_time') || ''}`,
-            `${labels.message}: ${formData.get('message') || (language === 'en' ? 'None' : 'Không có')}`
-        ].join('\n');
+        const registrationText = buildRegistrationMessage();
 
         showFormStatus('form_sending', 'sending');
         if (registrationSubmit) {
@@ -768,6 +821,17 @@ if (enquiryForm) {
                 registrationSubmit.textContent = originalButtonText || translations[language]?.form_submit;
             }
         }
+    });
+
+    registrationEmail?.addEventListener('click', () => {
+        if (!enquiryForm.reportValidity()) return;
+
+        const language = document.documentElement.lang || 'vi';
+        const subject = language === 'en'
+            ? 'Free Trial Lesson Registration'
+            : 'Đăng Ký Buổi Học Thử Miễn Phí';
+        const mailto = `mailto:buile.610762@gmail.com?cc=george_velicu@icloud.com&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(buildRegistrationMessage())}`;
+        window.location.href = mailto;
     });
 }
 

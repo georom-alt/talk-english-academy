@@ -794,6 +794,12 @@ h3 {
     border-radius: 20px;
 }
 
+.zalo-direct-button {
+    width: fit-content;
+    margin-top: 12px;
+    font-size: 0.88rem;
+}
+
 .qr-copy strong {
     display: block;
     margin-bottom: 8px;
@@ -1364,6 +1370,47 @@ h3 {
     font-weight: 800;
 }
 
+.language-tags strong {
+    align-self: center;
+    color: var(--muted);
+    font-size: 0.82rem;
+}
+
+.schedule-section {
+    background: var(--off-white);
+}
+
+.schedule-grid {
+    width: min(100%, 850px);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.schedule-card {
+    padding: 30px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    box-shadow: 0 12px 30px rgba(7, 22, 66, 0.07);
+}
+
+.schedule-card > span {
+    color: var(--red);
+    font-weight: 900;
+    letter-spacing: 0.12em;
+}
+
+.schedule-card h3 { margin: 10px 0 6px; }
+.schedule-card strong { color: var(--blue); font-size: 1.35rem; }
+.schedule-card p { color: var(--muted); }
+.schedule-note { width: min(100%, 850px); margin: 18px auto 0; color: var(--muted); text-align: center; }
+
+@media (max-width: 700px) {
+    .schedule-grid { grid-template-columns: 1fr; }
+}
+
 .progress-section {
     background: var(--white);
 }
@@ -1664,8 +1711,18 @@ h3 {
 }
 
 .form-actions .button-secondary {
+    color: var(--white);
     border: 1px solid currentColor;
     background: transparent;
+}
+
+.form-actions .button-secondary:hover {
+    color: var(--navy);
+    background: var(--white);
+}
+
+#registration-email {
+    grid-column: 1 / -1;
 }
 
 #registration-submit:disabled {
