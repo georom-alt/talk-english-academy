@@ -214,18 +214,18 @@ const translations = {
         "goal_other": "Mục tiêu khác",
         "form_message": "Tin nhắn",
         "form_message_placeholder": "Bạn có thể cho chúng tôi biết thêm về mục tiêu hoặc câu hỏi của bạn.",
-        "form_submit": "Sao Chép Đăng Ký Cho Zalo",
+        "form_submit": "Gửi Đăng Ký Trực Tiếp",
         "form_email_an": "Gửi Đăng Ký Qua Email",
-        "form_email_both": "Gửi Email Cho An Và George",
+        "form_email_both": "Gửi Bằng Ứng Dụng Email",
         "form_copy": "Sao Chép Nội Dung",
         "form_opened": "Đang gửi đăng ký...",
         "form_copied": "Đã sao chép nội dung đăng ký. Bạn có thể dán vào email hoặc Zalo.",
         "form_copy_failed": "Không thể sao chép tự động. Vui lòng chọn và sao chép nội dung thủ công.",
-        "form_note": "Nút email sẽ mở ứng dụng email của bạn với nội dung đã điền sẵn. Hoặc sao chép nội dung và gửi cho An qua Zalo.",
-        "form_sending": "Đang chuẩn bị nội dung...",
-        "form_success": "Đã sao chép nội dung đăng ký. Bây giờ hãy quét Zalo của An và dán nội dung vào tin nhắn.",
+        "form_note": "Nút gửi trực tiếp sẽ chuyển đăng ký đến An và George. Bạn cũng có thể dùng ứng dụng email hoặc liên hệ An qua Zalo.",
+        "form_sending": "Đang gửi đăng ký...",
+        "form_success": "Cảm ơn bạn! Đăng ký đã được gửi. An hoặc George sẽ liên hệ với bạn trong vòng 24 giờ.",
         "form_activation": "Đăng ký đã được gửi. George cần xác nhận email kích hoạt FormSubmit lần đầu tiên để bắt đầu nhận biểu mẫu.",
-        "form_error": "Không thể sao chép tự động. Vui lòng sao chép nội dung thủ công hoặc quét Zalo của An.",
+        "form_error": "Hiện chưa thể gửi đăng ký. Vui lòng dùng nút email hoặc liên hệ An qua Zalo.",
         "footer_location": "Toronto, Canada · Học trực tuyến qua Microsoft Teams",
         "footer_support": "Teacher George · Cố vấn Thành công Học viên An tại Việt Nam",
         "copyright": "© 2026 Talk English – Nói Là Được. Bảo lưu mọi quyền.",
@@ -285,7 +285,7 @@ const translations = {
         "schedule_note": "Lịch có thể thay đổi một giờ theo mùa tại Canada. An và George luôn xác nhận giờ học chính xác theo giờ Việt Nam trước mỗi khóa học.",
         "languages_spoken": "Ngôn ngữ:",
         "faq_6_q": "Thông tin đăng ký của tôi được sử dụng như thế nào?",
-        "faq_6_a": "Thông tin chỉ được An và George sử dụng để liên hệ về buổi học thử, lịch học và chương trình. Talk English không bán thông tin cá nhân.",
+        "faq_6_a": "Thông tin của bạn chỉ được xử lý để chuyển đăng ký đến An và George và để liên hệ về buổi học thử, lịch học và chương trình. Talk English không bán thông tin cá nhân.",
         "faq_7_q": "Nếu tôi cần đổi lịch thì sao?",
         "faq_7_a": "Hãy liên hệ với An hoặc George càng sớm càng tốt. Lịch thay thế tùy thuộc vào thời gian còn trống và sẽ được xác nhận bằng văn bản.",
         "faq_8_q": "Thanh toán và hoàn tiền được thực hiện như thế nào?",
@@ -528,15 +528,15 @@ const translations = {
         "goal_other": "Another goal",
         "form_message": "Message",
         "form_message_placeholder": "Tell us your current level and preferred learning time.",
-        "form_submit": "Copy Registration for Zalo",
+        "form_submit": "Submit Registration",
         "form_email_an": "Email Registration to An",
-        "form_email_both": "Email An and George",
+        "form_email_both": "Send with Email App",
         "form_copy": "Copy Message",
         "form_opened": "Sending registration...",
         "form_copied": "The registration message was copied. You can paste it into email or Zalo.",
         "form_copy_failed": "Automatic copying was unavailable. Please select and copy the message manually.",
-        "form_note": "The email button opens your email app with the registration details filled in. You can also copy the message and send it to An through Zalo.",
-        "form_sending": "Preparing registration...",
+        "form_note": "Direct submission sends your registration to An and George. You can also use your email app or contact An through Zalo.",
+        "form_sending": "Sending registration...",
         "form_success": "Thank you! Your registration was sent. An or George will contact you within 24 hours.",
         "form_activation": "The registration was submitted. George must confirm the one-time FormSubmit activation email before new forms can be delivered.",
         "form_error": "We could not send the form right now. Please scan An’s Zalo code or email George.",
@@ -599,7 +599,7 @@ const translations = {
         "schedule_note": "Availability may shift by one hour with Canada’s seasonal clock changes. An and George will always confirm the exact schedule in Vietnam time before each course.",
         "languages_spoken": "Languages spoken:",
         "faq_6_q": "How will my registration information be used?",
-        "faq_6_a": "An and George use it only to contact you about the trial lesson, scheduling, and programs. Talk English does not sell personal information.",
+        "faq_6_a": "Your information is processed only to deliver the registration to An and George and to contact you about the trial lesson, scheduling, and programs. Talk English does not sell personal information.",
         "faq_7_q": "What if I need to reschedule?",
         "faq_7_a": "Contact An or George as early as possible. Replacement times depend on availability and will be confirmed in writing.",
         "faq_8_q": "How do payment and refunds work?",
@@ -795,26 +795,36 @@ if (enquiryForm) {
         showFormStatus('form_sending', 'sending');
         if (registrationSubmit) {
             registrationSubmit.disabled = true;
-            registrationSubmit.textContent = translations[language]?.form_sending || 'Preparing...';
+            registrationSubmit.textContent = translations[language]?.form_sending || 'Sending...';
         }
 
         try {
-            await navigator.clipboard.writeText(registrationText);
-            showFormStatus('form_success', 'success');
-            document.querySelector('.admin-card')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            const formData = new FormData(enquiryForm);
+            formData.set('website_language', language === 'en' ? 'English' : 'Vietnamese');
+            formData.set('_subject', language === 'en'
+                ? 'New Talk English Trial Registration'
+                : 'Đăng Ký Học Thử Talk English');
+            formData.set('registration_summary', registrationText);
+
+            const response = await fetch('https://formsubmit.co/ajax/hello@noiladuoc.com', {
+                method: 'POST',
+                headers: { Accept: 'application/json' },
+                body: formData
+            });
+            const result = await response.json().catch(() => ({}));
+
+            if (!response.ok || result.success === false || result.success === 'false') {
+                throw new Error(result.message || 'Registration submission failed');
+            }
+
+            const activationRequired = /activat|confirm/i.test(String(result.message || ''));
+            showFormStatus(activationRequired ? 'form_activation' : 'form_success', 'success');
+            enquiryForm.reset();
+            const languageField = document.getElementById('registration-language');
+            if (languageField) languageField.value = language === 'en' ? 'English' : 'Vietnamese';
         } catch (error) {
-            console.error('Clipboard error:', error);
-            const fallback = document.createElement('textarea');
-            fallback.value = registrationText;
-            fallback.setAttribute('readonly', '');
-            fallback.style.position = 'fixed';
-            fallback.style.opacity = '0';
-            document.body.appendChild(fallback);
-            fallback.select();
-            const copied = document.execCommand('copy');
-            fallback.remove();
-            showFormStatus(copied ? 'form_success' : 'form_error', copied ? 'success' : 'error');
-            if (copied) document.querySelector('.admin-card')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            console.error('Registration submission error:', error);
+            showFormStatus('form_error', 'error');
         } finally {
             if (registrationSubmit) {
                 registrationSubmit.disabled = false;
