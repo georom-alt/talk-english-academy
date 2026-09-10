@@ -830,7 +830,7 @@ if (enquiryForm) {
         const subject = language === 'en'
             ? 'Free Trial Lesson Registration'
             : 'Đăng Ký Buổi Học Thử Miễn Phí';
-        const mailto = `mailto:buile.610762@gmail.com?cc=george_velicu@icloud.com&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(buildRegistrationMessage())}`;
+        const mailto = `mailto:hello@noiladuoc.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(buildRegistrationMessage())}`;
         window.location.href = mailto;
     });
 }
