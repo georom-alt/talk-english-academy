@@ -1762,6 +1762,19 @@ h3 {
     font-size: 0.9rem;
 }
 
+.footer-email {
+    width: fit-content;
+    color: #ffffff;
+    font-weight: 800;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+}
+
+.footer-email:hover,
+.footer-email:focus-visible {
+    color: #ffd77a;
+}
+
 .form-status[data-state="sending"] { color: #fff3a6; }
 .admin-card:target, #contact:target .admin-card {
     outline: 3px solid rgba(0, 104, 181, 0.18);
