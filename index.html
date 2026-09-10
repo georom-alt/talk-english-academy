@@ -513,6 +513,9 @@
 </div>
 <form class="enquiry-form" id="enquiry-form" novalidate="">
 <input aria-hidden="true" autocomplete="off" class="form-honeypot" name="_honey" tabindex="-1" type="text"/>
+<input name="_template" type="hidden" value="table"/>
+<input name="source_page" type="hidden" value="https://noiladuoc.com/"/>
+<input id="registration-language" name="website_language" type="hidden" value="Vietnamese"/>
 <label>
 <span data-i18n="form_name">Họ và tên</span>
 <input autocomplete="name" id="student-name" name="name" required="" type="text"/>
@@ -562,16 +565,16 @@
 <textarea data-i18n-placeholder="form_message_placeholder" id="student-message" name="message" placeholder="Bạn có thể cho chúng tôi biết thêm về mục tiêu hoặc câu hỏi của bạn." rows="5"></textarea>
 </label>
 <label class="consent-row form-full">
-<input id="student-consent" required="" type="checkbox"/>
+<input id="student-consent" name="consent" required="" type="checkbox" value="Agreed"/>
 <span data-i18n="form_consent">Tôi đồng ý để Talk English liên hệ với tôi về buổi học thử và chương trình học.</span>
 </label>
 <div class="form-actions form-full">
-<button class="button button-primary" data-i18n="form_email_both" id="registration-email" type="button">Gửi Email Cho An Và George</button>
-<button class="button button-secondary" data-i18n="form_submit" id="registration-submit" type="submit">Sao Chép Đăng Ký Cho Zalo</button>
+<button class="button button-primary" data-i18n="form_submit" id="registration-submit" type="submit">Gửi Đăng Ký Trực Tiếp</button>
+<button class="button button-secondary" data-i18n="form_email_both" id="registration-email" type="button">Gửi Bằng Ứng Dụng Email</button>
 <a class="button button-secondary" data-i18n="form_zalo_option" href="#contact">Quét Zalo Của An</a>
 </div>
 <p aria-live="polite" class="form-status form-full" id="form-status" role="status"></p>
-<p class="form-note form-full" data-i18n="form_note">Nút email sẽ mở ứng dụng email của bạn với nội dung đã điền sẵn. Hoặc sao chép nội dung và gửi cho An qua Zalo.</p>
+<p class="form-note form-full" data-i18n="form_note">Nút gửi trực tiếp sẽ chuyển đăng ký đến An và George. Bạn cũng có thể dùng ứng dụng email hoặc liên hệ An qua Zalo.</p>
 </form>
 </div>
 </section>
@@ -626,7 +629,7 @@
 <summary data-i18n="faq_5_q">Tôi cần chuẩn bị gì cho buổi học online?</summary>
 <p data-i18n="faq_5_a">Bạn cần thiết bị có internet, tai nghe hoặc loa, microphone và một nơi tương đối yên tĩnh.</p>
 </details>
-<details><summary data-i18n="faq_6_q">Thông tin đăng ký của tôi được sử dụng như thế nào?</summary><p data-i18n="faq_6_a">Thông tin chỉ được An và George sử dụng để liên hệ về buổi học thử, lịch học và chương trình. Talk English không bán thông tin cá nhân.</p></details>
+<details><summary data-i18n="faq_6_q">Thông tin đăng ký của tôi được sử dụng như thế nào?</summary><p data-i18n="faq_6_a">Thông tin của bạn chỉ được xử lý để chuyển đăng ký đến An và George và để liên hệ về buổi học thử, lịch học và chương trình. Talk English không bán thông tin cá nhân.</p></details>
 <details><summary data-i18n="faq_7_q">Nếu tôi cần đổi lịch thì sao?</summary><p data-i18n="faq_7_a">Hãy liên hệ với An hoặc George càng sớm càng tốt. Lịch thay thế tùy thuộc vào thời gian còn trống và sẽ được xác nhận bằng văn bản.</p></details>
 <details><summary data-i18n="faq_8_q">Thanh toán và hoàn tiền được thực hiện như thế nào?</summary><p data-i18n="faq_8_a">Buổi học thử miễn phí. Học phí, phương thức thanh toán, điều kiện đổi lịch và hoàn tiền của khóa học trả phí sẽ được xác nhận bằng văn bản trước khi bạn thanh toán.</p></details>
 </div>
@@ -709,7 +712,7 @@
 <a class="footer-email" href="mailto:hello@noiladuoc.com">hello@noiladuoc.com</a>
 </div>
 <p class="copyright" data-i18n="copyright">© 2026 Talk English – Nói Là Được. All rights reserved.</p>
-<p class="release-version">Website release v1.6 · Search Foundation</p></div>
+<p class="release-version">Website release v1.7 · Direct Registration</p></div>
 </footer>
 </body>
 </html>
