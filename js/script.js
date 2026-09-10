@@ -780,57 +780,15 @@ function buildRegistrationMessage() {
 }
 
 if (enquiryForm) {
-    enquiryForm.addEventListener('submit', async (event) => {
-        event.preventDefault();
-
-        if (!enquiryForm.reportValidity()) return;
-
-        const honeypot = enquiryForm.querySelector('[name="_honey"]');
-        if (honeypot?.value) return;
-
+    enquiryForm.addEventListener('submit', () => {
         const language = document.documentElement.lang || 'vi';
-        const originalButtonText = registrationSubmit?.textContent || '';
-        const registrationText = buildRegistrationMessage();
-
+        const languageField = document.getElementById('registration-language');
+        const subjectField = document.getElementById('registration-subject');
+        if (languageField) languageField.value = language === 'en' ? 'English' : 'Vietnamese';
+        if (subjectField) subjectField.value = language === 'en'
+            ? 'New Talk English Trial Registration'
+            : 'Đăng Ký Học Thử Talk English';
         showFormStatus('form_sending', 'sending');
-        if (registrationSubmit) {
-            registrationSubmit.disabled = true;
-            registrationSubmit.textContent = translations[language]?.form_sending || 'Sending...';
-        }
-
-        try {
-            const formData = new FormData(enquiryForm);
-            formData.set('website_language', language === 'en' ? 'English' : 'Vietnamese');
-            formData.set('_subject', language === 'en'
-                ? 'New Talk English Trial Registration'
-                : 'Đăng Ký Học Thử Talk English');
-            formData.set('registration_summary', registrationText);
-
-            const response = await fetch('https://formsubmit.co/ajax/hello@noiladuoc.com', {
-                method: 'POST',
-                headers: { Accept: 'application/json' },
-                body: formData
-            });
-            const result = await response.json().catch(() => ({}));
-
-            if (!response.ok || result.success === false || result.success === 'false') {
-                throw new Error(result.message || 'Registration submission failed');
-            }
-
-            const activationRequired = /activat|confirm/i.test(String(result.message || ''));
-            showFormStatus(activationRequired ? 'form_activation' : 'form_success', 'success');
-            enquiryForm.reset();
-            const languageField = document.getElementById('registration-language');
-            if (languageField) languageField.value = language === 'en' ? 'English' : 'Vietnamese';
-        } catch (error) {
-            console.error('Registration submission error:', error);
-            showFormStatus('form_error', 'error');
-        } finally {
-            if (registrationSubmit) {
-                registrationSubmit.disabled = false;
-                registrationSubmit.textContent = originalButtonText || translations[language]?.form_submit;
-            }
-        }
     });
 
     registrationEmail?.addEventListener('click', () => {
@@ -843,6 +801,10 @@ if (enquiryForm) {
         const mailto = `mailto:hello@noiladuoc.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(buildRegistrationMessage())}`;
         window.location.href = mailto;
     });
+}
+
+if (new URLSearchParams(window.location.search).get('registration') === 'success') {
+    showFormStatus('form_success', 'success');
 }
 
 
