@@ -189,6 +189,7 @@ const translations = {
         "form_contact": "Email hoặc số Zalo",
         "form_zalo": "Số điện thoại / Zalo",
         "form_email_optional": "Email (không bắt buộc)",
+        "form_referred_by": "Người giới thiệu (không bắt buộc)",
         "form_level": "Trình độ hiện tại",
         "level_beginner": "Người mới bắt đầu",
         "level_elementary": "Sơ cấp",
@@ -272,6 +273,13 @@ const translations = {
         "price_private_item_2": "Nội dung và lịch học theo mục tiêu cá nhân",
         "price_private_item_3": "Phản hồi chuyên sâu sau mỗi buổi",
         "pricing_note": "Giá sáng lập áp dụng trong thời gian ra mắt. Lịch học, học phí và điều kiện thanh toán sẽ được xác nhận bằng văn bản trước khi học viên thanh toán.",
+        "referral_title": "Giới Thiệu Bạn Bè – Nhận Ưu Đãi Học Phí",
+        "referral_intro": "Giới thiệu một người bạn đăng ký và thanh toán khóa học.",
+        "referral_item_1": "✓ Bạn nhận 100.000 ₫ tín dụng học phí",
+        "referral_item_2": "✓ Người bạn được giảm 50.000 ₫",
+        "referral_item_3": "✓ Không giới hạn số người giới thiệu",
+        "referral_terms": "Ưu đãi được áp dụng sau khi học viên mới thanh toán. Mỗi học viên mới chỉ áp dụng cho một người giới thiệu. Tín dụng được dùng cho khóa học tiếp theo và không đổi thành tiền mặt.",
+        "referral_button": "Giới Thiệu Bạn Bè",
         "trial_item_1": "Đánh giá trình độ ngắn",
         "trial_item_2": "Luyện hội thoại thực tế",
         "trial_item_3": "Phản hồi và kế hoạch học đề xuất",
@@ -505,6 +513,7 @@ const translations = {
         "form_contact": "Email or Zalo number",
         "form_zalo": "Phone / Zalo number",
         "form_email_optional": "Email (optional)",
+        "form_referred_by": "Referred by (optional)",
         "form_level": "Current English level",
         "level_beginner": "Beginner",
         "level_elementary": "Elementary",
@@ -588,6 +597,13 @@ const translations = {
         "price_private_item_2": "Content and schedule based on your goals",
         "price_private_item_3": "Detailed feedback after each lesson",
         "pricing_note": "Founding prices apply during the launch period. The schedule, fee and payment terms are confirmed in writing before payment.",
+        "referral_title": "Refer a Friend – Earn Tuition Credit",
+        "referral_intro": "Refer a friend who enrols and pays for a course.",
+        "referral_item_1": "✓ You receive 100,000 VND in tuition credit",
+        "referral_item_2": "✓ Your friend receives a 50,000 VND discount",
+        "referral_item_3": "✓ Refer as many friends as you like",
+        "referral_terms": "The reward is issued after the new student pays. Each new student may name only one referrer. Credit applies to a future course and cannot be exchanged for cash.",
+        "referral_button": "Refer a Friend",
         "trial_item_1": "A short level assessment",
         "trial_item_2": "Practical conversation practice",
         "trial_item_3": "Feedback and a recommended learning plan",
@@ -760,13 +776,13 @@ function buildRegistrationMessage() {
         ? {
             heading: 'Talk English – Free Trial Lesson Registration',
             name: 'Name', phone: 'Phone / Zalo', email: 'Email',
-            level: 'Current level', goal: 'Learning goal',
+            referred: 'Referred by', level: 'Current level', goal: 'Learning goal',
             time: 'Preferred class time', message: 'Message'
           }
         : {
             heading: 'Talk English – Đăng Ký Buổi Học Thử Miễn Phí',
             name: 'Họ và tên', phone: 'Điện thoại / Zalo', email: 'Email',
-            level: 'Trình độ hiện tại', goal: 'Mục tiêu học',
+            referred: 'Người giới thiệu', level: 'Trình độ hiện tại', goal: 'Mục tiêu học',
             time: 'Thời gian phù hợp', message: 'Tin nhắn'
           };
 
@@ -776,6 +792,7 @@ function buildRegistrationMessage() {
         `${labels.name}: ${formData.get('name') || ''}`,
         `${labels.phone}: ${formData.get('phone_zalo') || ''}`,
         `${labels.email}: ${formData.get('email') || (language === 'en' ? 'Not provided' : 'Không cung cấp')}`,
+        `${labels.referred}: ${formData.get('referred_by') || (language === 'en' ? 'Not provided' : 'Không cung cấp')}`,
         `${labels.level}: ${formData.get('current_level') || ''}`,
         `${labels.goal}: ${formData.get('learning_goal') || ''}`,
         `${labels.time}: ${formData.get('preferred_time') || ''}`,

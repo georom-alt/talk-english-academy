@@ -312,6 +312,17 @@
 <a class="button button-outline" data-i18n="price_private_button" href="#trial-form">Đăng Ký Học Riêng</a></article>
 </div>
 <div class="pricing-includes"><h3 data-i18n="pricing_includes_title">Mỗi chương trình đều bao gồm</h3><ul><li data-i18n="pricing_include_1">✓ Tài liệu học tập</li><li data-i18n="pricing_include_2">✓ Luyện nói trong mỗi buổi</li><li data-i18n="pricing_include_3">✓ Bài tập thực hành</li><li data-i18n="pricing_include_4">✓ Phản hồi cá nhân</li><li data-i18n="pricing_include_5">✓ Môi trường học thân thiện</li></ul></div><p class="pricing-note" data-i18n="pricing_note">Học phí được hiển thị bằng đồng Việt Nam và có thể thay đổi. Học viên sẽ được xác nhận mức phí trước khi đăng ký.</p>
+<div class="pricing-includes referral-card" id="referral-program">
+<h3 data-i18n="referral_title">Giới Thiệu Bạn Bè – Nhận Ưu Đãi Học Phí</h3>
+<p data-i18n="referral_intro">Giới thiệu một người bạn đăng ký và thanh toán khóa học.</p>
+<ul>
+<li data-i18n="referral_item_1">✓ Bạn nhận 100.000 ₫ tín dụng học phí</li>
+<li data-i18n="referral_item_2">✓ Người bạn được giảm 50.000 ₫</li>
+<li data-i18n="referral_item_3">✓ Không giới hạn số người giới thiệu</li>
+</ul>
+<p class="pricing-note" data-i18n="referral_terms">Ưu đãi được áp dụng sau khi học viên mới thanh toán. Mỗi học viên mới chỉ áp dụng cho một người giới thiệu. Tín dụng được dùng cho khóa học tiếp theo và không đổi thành tiền mặt.</p>
+<a class="button button-outline" data-i18n="referral_button" href="#trial-form">Giới Thiệu Bạn Bè</a>
+</div>
 </section>
 <section aria-labelledby="schedule-title" class="section schedule-section" id="schedule">
 <div class="section-heading">
@@ -531,6 +542,10 @@
 <input autocomplete="email" id="student-email" name="email" type="email"/>
 </label>
 <label>
+<span data-i18n="form_referred_by">Người giới thiệu (không bắt buộc)</span>
+<input autocomplete="off" id="student-referred-by" name="referred_by" type="text"/>
+</label>
+<label>
 <span data-i18n="form_level">Trình độ hiện tại</span>
 <select id="student-level" name="current_level" required="">
 <option data-i18n="form_choose" value="">Vui lòng chọn</option>
@@ -714,7 +729,7 @@
 <a class="footer-email" href="mailto:hello@noiladuoc.com">hello@noiladuoc.com</a>
 </div>
 <p class="copyright" data-i18n="copyright">© 2026 Talk English – Nói Là Được. All rights reserved.</p>
-<p class="release-version">Website release v1.8 · Affordable Founding Prices</p></div>
+<p class="release-version">Website release v1.9 · Referral Program</p></div>
 </footer>
 </body>
 </html>
