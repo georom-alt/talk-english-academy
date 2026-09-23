@@ -2220,3 +2220,6 @@ section[id], main[id], #trial-form {
 .main-navigation a.is-current:not(.nav-cta)::after {
     transform: scaleX(1);
 }
+
+/* Temporary George-only contact and team layout. */
+.team-grid, .contact-grid { grid-template-columns: minmax(0, 1fr); max-width: 650px; margin-inline: auto; }
