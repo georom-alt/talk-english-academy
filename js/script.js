@@ -222,7 +222,7 @@ const translations = {
         "form_opened": "Đang gửi đăng ký...",
         "form_copied": "Đã sao chép nội dung đăng ký. Bạn có thể dán vào email hoặc Zalo.",
         "form_copy_failed": "Không thể sao chép tự động. Vui lòng chọn và sao chép nội dung thủ công.",
-        "form_note": "Nút gửi trực tiếp sẽ chuyển đăng ký đến George. Bạn cũng có thể dùng ứng dụng email hoặc liên hệ An qua Zalo.",
+        "form_note": "Nút gửi trực tiếp sẽ chuyển đăng ký đến An và George. Bạn cũng có thể dùng ứng dụng email hoặc liên hệ An qua Zalo.",
         "form_sending": "Đang gửi đăng ký...",
         "form_success": "Cảm ơn bạn! Đăng ký đã được gửi. An hoặc George sẽ liên hệ với bạn trong vòng 24 giờ.",
         "form_activation": "Đăng ký đã được gửi. George cần xác nhận email kích hoạt FormSubmit lần đầu tiên để bắt đầu nhận biểu mẫu.",
@@ -546,7 +546,7 @@ const translations = {
         "form_opened": "Sending registration...",
         "form_copied": "The registration message was copied. You can paste it into email or Zalo.",
         "form_copy_failed": "Automatic copying was unavailable. Please select and copy the message manually.",
-        "form_note": "Direct submission sends your registration to George. You can also use your email app or contact An through Zalo.",
+        "form_note": "Direct submission sends your registration to An and George. You can also use your email app or contact An through Zalo.",
         "form_sending": "Sending registration...",
         "form_success": "Thank you! Your registration was sent. An or George will contact you within 24 hours.",
         "form_activation": "The registration was submitted. George must confirm the one-time FormSubmit activation email before new forms can be delivered.",
@@ -819,7 +819,7 @@ if (enquiryForm) {
         const subject = language === 'en'
             ? 'Free Trial Lesson Registration'
             : 'Đăng Ký Buổi Học Thử Miễn Phí';
-        const mailto = `mailto:george@noiladuoc.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(buildRegistrationMessage())}`;
+        const mailto = `mailto:hello@noiladuoc.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(buildRegistrationMessage())}`;
         window.location.href = mailto;
     });
 }
