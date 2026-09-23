@@ -2220,3 +2220,5 @@ section[id], main[id], #trial-form {
 .main-navigation a.is-current:not(.nav-cta)::after {
     transform: scaleX(1);
 }
+
+.illustration-label { display: block; margin: 8px 0 0; color: #52657d; font-size: .78rem; text-align: center; }
