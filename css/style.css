@@ -2221,5 +2221,4 @@ section[id], main[id], #trial-form {
     transform: scaleX(1);
 }
 
-/* Temporary George-only contact and team layout. */
-.team-grid, .contact-grid { grid-template-columns: minmax(0, 1fr); max-width: 650px; margin-inline: auto; }
+.illustration-label { display: block; margin: 8px 0 0; color: #52657d; font-size: .78rem; text-align: center; }
