@@ -819,7 +819,7 @@ if (enquiryForm) {
         const subject = language === 'en'
             ? 'Free Trial Lesson Registration'
             : 'Đăng Ký Buổi Học Thử Miễn Phí';
-        const mailto = `mailto:hello@noiladuoc.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(buildRegistrationMessage())}`;
+        const mailto = `mailto:george@noiladuoc.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(buildRegistrationMessage())}`;
         window.location.href = mailto;
     });
 }
