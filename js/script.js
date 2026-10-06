@@ -2,6 +2,18 @@
 
 const translations = {
     "vi": {
+        "portal_label": "Cổng học tập riêng",
+        "portal_title": "Đăng nhập Nói Là Được",
+        "portal_intro": "Chọn lối vào của bạn để truy cập tài liệu, bài tập và quản lý học viên.",
+        "portal_teacher_title": "Teacher George",
+        "portal_teacher_copy": "Quản lý học viên, tài liệu và tài khoản nhân viên.",
+        "portal_teacher_login": "Đăng nhập giáo viên",
+        "portal_advisor_title": "An · Student Success Advisor",
+        "portal_advisor_copy": "Đăng ký học viên, quản lý lịch học và mật khẩu học viên.",
+        "portal_advisor_login": "Đăng nhập Cố vấn Học viên",
+        "portal_student_title": "Học viên",
+        "portal_student_copy": "Xem tài liệu, video luyện tập, gửi bài tập và nhận phản hồi.",
+        "portal_student_login": "Đăng nhập học viên",
         "page_title": "Talk English – Nói Là Được | Tiếng Anh Giao Tiếp Cho Người Lớn",
         "page_description": "Talk English – Nói Là Được. Tiếng Anh giao tiếp thực tế cho người lớn Việt Nam, học trực tuyến cùng Teacher George qua Microsoft Teams.",
         "menu_open": "Mở menu",
@@ -328,6 +340,18 @@ const translations = {
         "stories_cta_button": "Bắt Đầu Cùng Chúng Tôi"
     },
     "en": {
+        "portal_label": "Private learning portal",
+        "portal_title": "Nói Là Được Login",
+        "portal_intro": "Choose your entrance to access learning materials, homework and student management.",
+        "portal_teacher_title": "Teacher George",
+        "portal_teacher_copy": "Manage students, learning materials and staff accounts.",
+        "portal_teacher_login": "Teacher login",
+        "portal_advisor_title": "An · Student Success Advisor",
+        "portal_advisor_copy": "Register students, manage class schedules and student passwords.",
+        "portal_advisor_login": "Student Success Advisor login",
+        "portal_student_title": "Students",
+        "portal_student_copy": "Access materials and practice videos, submit homework and read feedback.",
+        "portal_student_login": "Students login",
         "page_title": "Talk English – Nói Là Được | Practical English for Adults",
         "page_description": "Practical online English communication lessons for Vietnamese adults with Teacher George through Microsoft Teams.",
         "menu_open": "Open menu",
