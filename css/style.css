@@ -2220,3 +2220,14 @@ section[id], main[id], #trial-form {
 .main-navigation a.is-current:not(.nav-cta)::after {
     transform: scaleX(1);
 }
+
+/* Main website entrances to the private learning portal. */
+.portal-login-section { background: var(--off-white); }
+.portal-login-heading { max-width: var(--max-width); margin: 0 auto 24px; text-align: center; }
+.portal-login-heading h2 { margin: 0 0 10px; }
+.portal-login-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; max-width: var(--max-width); margin: 0 auto; }
+.portal-login-card { display: flex; flex-direction: column; align-items: flex-start; padding: 28px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--white); box-shadow: 0 8px 24px rgba(7,22,66,.06); }
+.portal-login-card h3 { margin: 0 0 10px; color: var(--navy); font-size: 1.3rem; }
+.portal-login-card p { margin: 0 0 24px; flex: 1; }
+.portal-login-card .button { width: 100%; text-align: center; white-space: normal; min-height: 52px; }
+@media (max-width: 850px) { .portal-login-grid { grid-template-columns: 1fr; } }
