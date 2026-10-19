@@ -979,6 +979,7 @@ function buildRegistrationMessage() {
         `${labels.goal}: ${formData.get('learning_goal') || ''}`,
         `${language === 'en' ? 'Course of interest' : 'Khóa học quan tâm'}: ${document.getElementById('student-course')?.selectedOptions[0]?.textContent || ''}`,
         ...(formData.get('interview_track_interest') ? [`${language === 'en' ? 'Interview track interest' : 'Lộ trình phỏng vấn quan tâm'}: ${formData.get('interview_track_interest')}`] : []),
+        ...(formData.get('self_assessment') ? [`Self-assessment: ${formData.get('self_assessment')}`] : []),
         `${labels.time}: ${formData.get('preferred_time') || ''}`,
         `${labels.message}: ${formData.get('message') || (language === 'en' ? 'None' : 'Không có')}`
     ].join('\n');
