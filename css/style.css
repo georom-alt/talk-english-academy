@@ -2242,3 +2242,5 @@ html[lang="en"] .assessment-vi,html:not([lang="en"]) .assessment-en{display:none
 .assessment-form select{width:100%;min-height:48px;padding:.7rem;border:1px solid #81929b;border-radius:8px;background:white;color:#17313b;font:inherit}
 .assessment-form p{grid-column:1/-1}.assessment-result{max-width:900px;margin:2rem auto;padding:1.5rem;border:2px solid #087f83;border-radius:12px}.assessment-result[hidden]{display:none}
 @media(max-width:640px){.assessment-form{grid-template-columns:1fr}.assessment-result{padding:1rem}}
+
+.assessment-form [hidden]{display:none!important}
