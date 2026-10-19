@@ -2231,3 +2231,6 @@ section[id], main[id], #trial-form {
 .portal-login-card p { margin: 0 0 24px; flex: 1; }
 .portal-login-card .button { width: 100%; text-align: center; white-space: normal; min-height: 52px; }
 @media (max-width: 850px) { .portal-login-grid { grid-template-columns: 1fr; } }
+
+/* Keep the optional interview track hidden for other course enquiries. */
+#interview-track-field[hidden] { display: none; }
