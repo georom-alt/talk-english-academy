@@ -4,7 +4,7 @@ const translations = {
     "vi": {
         "portal_label": "Cổng học tập riêng",
         "portal_title": "Đăng nhập Nói Là Được",
-        "portal_intro": "Chọn lối vào của bạn để truy cập tài liệu, bài tập và quản lý học viên.",
+        "portal_intro": "Chọn lối vào của bạn để truy cập tài liệu, luyện tập tự chọn và quản lý học viên.",
         "portal_teacher_title": "Teacher George",
         "portal_teacher_copy": "Quản lý học viên, tài liệu và tài khoản nhân viên.",
         "portal_teacher_login": "Đăng nhập giáo viên",
@@ -12,7 +12,7 @@ const translations = {
         "portal_advisor_copy": "Đăng ký học viên, quản lý lịch học và mật khẩu học viên.",
         "portal_advisor_login": "Đăng nhập Cố vấn Học viên",
         "portal_student_title": "Học viên",
-        "portal_student_copy": "Xem tài liệu, video luyện tập, gửi bài tập và nhận phản hồi.",
+        "portal_student_copy": "Xem tài liệu, luyện tập tự chọn và nhận phản hồi riêng.",
         "portal_student_login": "Đăng nhập học viên",
         "page_title": "Nói Là Được – Talk English | Tiếng Anh Giao Tiếp Cho Người Lớn",
         "page_description": "Nói Là Được – Talk English. Tiếng Anh giao tiếp thực tế cho người lớn Việt Nam, học trực tuyến cùng Teacher George qua Microsoft Teams.",
@@ -65,6 +65,7 @@ const translations = {
         "value_5_body": "Chúng tôi tập trung vào khả năng giao tiếp và sự tiến bộ có thể cảm nhận được.",
         "value_6_title": "Không Bỏ Cuộc",
         "value_6_body": "Chúng tôi không bỏ cuộc với học viên và khuyến khích học viên không bỏ cuộc với chính mình.",
+        "practice_policy": "Luyện tập thêm ở nhà là tự chọn. Bạn không bắt buộc làm bài tập, ghi âm hoặc nộp bài. Chúng ta cùng luyện những phần quan trọng trong lớp, với sự hỗ trợ phù hợp với trình độ và mục tiêu của bạn.",
         "why_label": "Học theo cách phù hợp với người lớn",
         "why_title": "Vì Sao Chọn Talk English?",
         "why_intro": "Một môi trường học thân thiện, thực tế và tập trung vào giao tiếp.",
@@ -250,7 +251,7 @@ const translations = {
         "pricing_includes_title": "Mỗi chương trình đều bao gồm",
         "pricing_include_1": "✓ Tài liệu học tập",
         "pricing_include_2": "✓ Luyện nói trong mỗi buổi",
-        "pricing_include_3": "✓ Bài tập thực hành",
+        "pricing_include_3": "✓ Luyện tập thêm tự chọn",
         "pricing_include_4": "✓ Phản hồi cá nhân",
         "pricing_include_5": "✓ Môi trường học thân thiện",
         "academy_signature": "“Một ngày nào đó, chúng tôi hy vọng câu chuyện của bạn sẽ truyền cảm hứng cho một người khác bắt đầu.”",
@@ -419,7 +420,7 @@ const translations = {
     "en": {
         "portal_label": "Private learning portal",
         "portal_title": "Nói Là Được Login",
-        "portal_intro": "Choose your entrance to access learning materials, homework and student management.",
+        "portal_intro": "Choose your entrance for learning materials, optional practice and student management.",
         "portal_teacher_title": "Teacher George",
         "portal_teacher_copy": "Manage students, learning materials and staff accounts.",
         "portal_teacher_login": "Teacher login",
@@ -427,7 +428,7 @@ const translations = {
         "portal_advisor_copy": "Register students, manage class schedules and student passwords.",
         "portal_advisor_login": "Student Success Advisor login",
         "portal_student_title": "Students",
-        "portal_student_copy": "Access materials and practice videos, submit homework and read feedback.",
+        "portal_student_copy": "Access your materials, optional practice and private feedback.",
         "portal_student_login": "Students login",
         "page_title": "Nói Là Được – Talk English | Practical English for Adults",
         "page_description": "Practical online English communication lessons for Vietnamese adults with Teacher George through Microsoft Teams.",
@@ -480,6 +481,7 @@ const translations = {
         "value_5_body": "We focus on communication skills and progress learners can feel.",
         "value_6_title": "Never Give Up",
         "value_6_body": "We do not give up on our students, and we encourage them not to give up on themselves.",
+        "practice_policy": "Practice outside class is optional. You do not have to complete homework, record yourself or submit work. We practise the essentials together in class, with support for your current English and goals.",
         "why_label": "Learning designed for adults",
         "why_title": "Why Choose Talk English?",
         "why_intro": "A friendly, practical learning environment focused on communication.",
@@ -665,7 +667,7 @@ const translations = {
         "pricing_includes_title": "Every program includes",
         "pricing_include_1": "✓ Learning materials",
         "pricing_include_2": "✓ Speaking practice in every lesson",
-        "pricing_include_3": "✓ Practice activities",
+        "pricing_include_3": "✓ Optional extra practice",
         "pricing_include_4": "✓ Personal feedback",
         "pricing_include_5": "✓ A friendly learning environment",
         "academy_signature": "“One day, we hope your story will inspire someone else to begin.”",
@@ -1084,3 +1086,4 @@ document.querySelectorAll('[data-select-course]').forEach(link => {
     });
 });
 syncCourseInterest();
+
