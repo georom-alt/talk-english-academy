@@ -70,8 +70,9 @@ function render(){
  if(!current)return;
  document.getElementById('assessment-course').textContent=(en()?'Start with: ':'Nên bắt đầu với: ')+label(current.course)+(current.track?' — '+(current.track==='advanced'?'Advanced':'Beginner'):'');
  const reason=document.getElementById('assessment-reason');reason.textContent=description();reason.style.whiteSpace='pre-line';
+ window.dispatchEvent(new Event('nld-assessment-updated'));
 }
-function clear(){current=null;answers=null;result.hidden=true;registration.querySelector('[name="self_assessment"]')?.remove();}
+function clear(){current=null;answers=null;result.hidden=true;registration.querySelector('[name="self_assessment"]')?.remove();window.dispatchEvent(new Event('nld-assessment-updated'));}
 form.addEventListener('submit',e=>{e.preventDefault();if(!form.reportValidity())return;answers=Object.fromEntries(new FormData(form));current=recommend(answers);result.hidden=false;render();result.focus();result.scrollIntoView({behavior:'smooth',block:'center'});});
 function syncAudience(){const child=form.elements.audience.value==='kids';form.querySelectorAll('[data-assessment-group]').forEach(group=>{const hide=group.dataset.assessmentGroup===(child?'adult':'child');group.hidden=hide;group.querySelectorAll('select').forEach(sel=>{sel.disabled=hide;});});}
 form.addEventListener('change',()=>{clear();syncAudience();});form.addEventListener('reset',()=>{clear();setTimeout(syncAudience,0);});

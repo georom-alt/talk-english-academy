@@ -2244,3 +2244,15 @@ html[lang="en"] .assessment-vi,html:not([lang="en"]) .assessment-en{display:none
 @media(max-width:640px){.assessment-form{grid-template-columns:1fr}.assessment-result{padding:1rem}}
 
 .assessment-form [hidden]{display:none!important}
+
+/* Vietnam free-assessment offer and readable registration preview. */
+.free-assessment-promo{background:var(--blue-light);border-bottom:1px solid var(--border)}
+.free-assessment-inner{max-width:var(--max-width);margin:auto;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:2rem;align-items:center}
+.free-assessment-promo h2{color:var(--navy);font-size:clamp(1.7rem,3vw,2.5rem);line-height:1.2;margin:.5rem 0 1rem}
+.free-assessment-details{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;min-width:0}
+.free-assessment-details h3{color:var(--navy);margin:0 0 1rem}.free-assessment-details ul{padding-left:1.25rem}.free-assessment-details li{margin:.6rem 0}
+.free-assessment-promo .hero-actions{flex-wrap:wrap}.free-assessment-promo .button{white-space:normal;text-align:center}
+.registration-review{min-width:0;border:1px solid var(--border);border-radius:12px;padding:1rem;background:var(--off-white)}
+.registration-review summary{cursor:pointer;color:var(--navy);font-weight:700}.registration-review pre{font:inherit;line-height:1.65;white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%;margin:1rem 0 0}
+#free-assessment,#self-assessment,#trial-form{scroll-margin-top:110px}
+@media(max-width:780px){.free-assessment-inner{grid-template-columns:1fr;gap:1rem}.free-assessment-promo .button{width:100%}.free-assessment-details{padding:1.1rem}}

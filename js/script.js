@@ -2,6 +2,20 @@
 
 const translations = {
     "vi": {
+        "promo_label": "Tư vấn và đánh giá ban đầu miễn phí",
+        "promo_title": "Bắt đầu nói tiếng Anh tự tin hơn",
+        "promo_intro": "Bạn chưa biết nên bắt đầu từ đâu? Làm bài tự đánh giá ngắn, sau đó trao đổi cùng Teacher George để chọn khóa học phù hợp với mục tiêu và nhu cầu của bạn.",
+        "promo_practical": "Tiếng Anh cơ bản, thực tế cho cuộc sống và công việc. Kết quả tự đánh giá gợi ý điểm bắt đầu; George sẽ xác nhận trong buổi học thử qua Microsoft Teams.",
+        "promo_find": "Tìm khóa học phù hợp",
+        "promo_register": "Đăng ký tư vấn miễn phí",
+        "promo_free": "Miễn phí. Không bắt buộc đăng ký khóa học.",
+        "promo_step_1": "Chọn mục tiêu và làm bài tự đánh giá.",
+        "promo_step_2": "Gửi yêu cầu và thời gian phù hợp theo giờ Việt Nam.",
+        "promo_step_3": "Nhận lịch xác nhận để trao đổi trực tiếp với George.",
+        "promo_an": "An — Student Success Advisor in Vietnam — hỗ trợ bằng tiếng Việt về đăng ký và thông tin lớp học.",
+        "promo_terms": "Học phí, lịch học và điều kiện đăng ký được xác nhận trước khi thanh toán. Yêu cầu tư vấn không tạo tài khoản hay giữ chỗ trong khóa học.",
+        "form_review": "Xem lại thông tin và gợi ý trước khi gửi",
+        "form_delivery_note": "Có email: bạn có thể nhận thư xác nhận yêu cầu sau khi gửi trực tiếp. Không có email: An hoặc George liên hệ qua điện thoại/Zalo. Nút email mở thư nháp; bạn cần tự bấm Gửi.",
         "portal_label": "Cổng học tập riêng",
         "portal_title": "Đăng nhập Nói Là Được",
         "portal_intro": "Chọn lối vào của bạn để truy cập tài liệu, luyện tập tự chọn và quản lý học viên.",
@@ -9,7 +23,7 @@ const translations = {
         "portal_teacher_copy": "Quản lý học viên, tài liệu và tài khoản nhân viên.",
         "portal_teacher_login": "Đăng nhập giáo viên",
         "portal_advisor_title": "An · Student Success Advisor in Vietnam",
-        "portal_advisor_copy": "Đăng ký học viên, quản lý lịch học và mật khẩu học viên.",
+        "portal_advisor_copy": "Hỗ trợ đăng ký, lịch học và mật khẩu cho học viên Việt Nam được phân công.",
         "portal_advisor_login": "Đăng nhập Cố vấn Học viên tại Việt Nam",
         "portal_student_title": "Học viên",
         "portal_student_copy": "Xem tài liệu, luyện tập tự chọn và nhận phản hồi riêng.",
@@ -209,7 +223,7 @@ const translations = {
         "level_elementary": "Sơ cấp",
         "level_intermediate": "Trung cấp",
         "level_unsure": "Tôi chưa chắc",
-        "form_time": "Thời gian học phù hợp",
+        "form_time": "Thời gian học phù hợp · giờ Việt Nam (UTC+7)",
         "time_morning": "Buổi sáng",
         "time_afternoon": "Buổi chiều",
         "time_evening": "Buổi tối",
@@ -233,12 +247,12 @@ const translations = {
         "form_email_an": "Gửi Đăng Ký Qua Email",
         "form_email_both": "Gửi Bằng Ứng Dụng Email",
         "form_copy": "Sao Chép Nội Dung",
-        "form_opened": "Đang gửi đăng ký...",
+        "form_opened": "Ứng dụng email mở thư nháp. Kiểm tra nội dung và bấm Gửi để hoàn tất.",
         "form_copied": "Đã sao chép nội dung đăng ký. Bạn có thể dán vào email hoặc Zalo.",
         "form_copy_failed": "Không thể sao chép tự động. Vui lòng chọn và sao chép nội dung thủ công.",
         "form_note": "Đăng ký trực tiếp được gửi đến hello@noiladuoc.com. Bạn cũng có thể dùng ứng dụng email hoặc liên hệ An qua Zalo.",
         "form_sending": "Đang gửi đăng ký...",
-        "form_success": "Cảm ơn bạn! Đăng ký đã được gửi. An hoặc George sẽ liên hệ với bạn trong vòng 24 giờ.",
+        "form_success": "Cảm ơn bạn! Yêu cầu học thử đã được gửi để xử lý. An hoặc George sẽ liên hệ để thống nhất lịch học. Đây chưa phải xác nhận giờ học hay đăng ký khóa học trả phí.",
         "form_activation": "Đăng ký đã được gửi. George cần xác nhận email kích hoạt FormSubmit lần đầu tiên để bắt đầu nhận biểu mẫu.",
         "form_error": "Hiện chưa thể gửi đăng ký. Vui lòng dùng nút email hoặc liên hệ An qua Zalo.",
         "footer_location": "Toronto, Canada · Học trực tuyến qua Microsoft Teams",
@@ -418,6 +432,20 @@ const translations = {
         "track_advanced": "Advanced – luyện tập độc lập hơn"
     },
     "en": {
+        "promo_label": "Free initial consultation and assessment",
+        "promo_title": "Start speaking English with more confidence",
+        "promo_intro": "Not sure where to begin? Complete the short self-assessment, then speak with Teacher George to find a course that fits your goals and support needs.",
+        "promo_practical": "Basic, practical English for everyday life and work. The self-assessment suggests a starting point; George will confirm it in your trial through Microsoft Teams.",
+        "promo_find": "Find my starting course",
+        "promo_register": "Request a free consultation",
+        "promo_free": "Free. No obligation to buy a course.",
+        "promo_step_1": "Choose your goal and complete the self-assessment.",
+        "promo_step_2": "Send your request and preferred Vietnam time.",
+        "promo_step_3": "Receive an agreed time to speak directly with George.",
+        "promo_an": "An — Student Success Advisor in Vietnam — provides Vietnamese-language registration guidance and class information.",
+        "promo_terms": "Fees, schedules and enrolment terms are confirmed before payment. A consultation request does not create an account or reserve a course place.",
+        "form_review": "Review your details and recommendation before sending",
+        "form_delivery_note": "With an email address, you may receive a receipt after direct submission. Without email, An or George can contact you by phone/Zalo. The email button opens a draft; press Send in your email app to finish.",
         "portal_label": "Private learning portal",
         "portal_title": "Nói Là Được Login",
         "portal_intro": "Choose your entrance for learning materials, optional practice and student management.",
@@ -425,7 +453,7 @@ const translations = {
         "portal_teacher_copy": "Manage students, learning materials and staff accounts.",
         "portal_teacher_login": "Teacher login",
         "portal_advisor_title": "An · Student Success Advisor in Vietnam",
-        "portal_advisor_copy": "Register students, manage class schedules and student passwords.",
+        "portal_advisor_copy": "Support registration, schedules and passwords for her assigned Vietnamese students.",
         "portal_advisor_login": "Student Success Advisor in Vietnam login",
         "portal_student_title": "Students",
         "portal_student_copy": "Access your materials, optional practice and private feedback.",
@@ -625,7 +653,7 @@ const translations = {
         "level_elementary": "Elementary",
         "level_intermediate": "Intermediate",
         "level_unsure": "Not sure",
-        "form_time": "Preferred class time",
+        "form_time": "Preferred class time · Vietnam time (UTC+7)",
         "time_morning": "Morning",
         "time_afternoon": "Afternoon",
         "time_evening": "Evening",
@@ -649,12 +677,12 @@ const translations = {
         "form_email_an": "Email Registration to An",
         "form_email_both": "Send with Email App",
         "form_copy": "Copy Message",
-        "form_opened": "Sending registration...",
+        "form_opened": "Your email app opens a draft. Review it and press Send to finish.",
         "form_copied": "The registration message was copied. You can paste it into email or Zalo.",
         "form_copy_failed": "Automatic copying was unavailable. Please select and copy the message manually.",
         "form_note": "Direct submissions go to hello@noiladuoc.com. You can also use your email app or contact An through Zalo.",
         "form_sending": "Sending registration...",
-        "form_success": "Thank you! Your registration was sent. An or George will contact you within 24 hours.",
+        "form_success": "Thank you! Your trial request has been submitted for processing. An or George will contact you to agree a time. This is not a confirmed class time or paid-course enrolment.",
         "form_activation": "The registration was submitted. George must confirm the one-time FormSubmit activation email before new forms can be delivered.",
         "form_error": "We could not send the form right now. Please scan An’s Zalo code or email George.",
         "footer_location": "Toronto, Canada · Live online through Microsoft Teams",
@@ -978,21 +1006,39 @@ function buildRegistrationMessage() {
     return ['Nói Là Được – Talk English · Free trial / Học thử', '', ...registrationEntries().map(([key,value]) => key + ': ' + value)].join('\n');
 }
 
+function prepareRegistrationControls() {
+    const english = document.documentElement.lang === 'en';
+    const name = (document.getElementById('student-name').value || '').replace(/[\r\n]+/g, ' ').trim().slice(0,120);
+    const chosen = document.getElementById('student-course').selectedOptions[0]?.textContent.trim() || '';
+    document.getElementById('registration-language').value = english ? 'English' : 'Vietnamese';
+    document.getElementById('registration-subject').value = ['Nói Là Được', english ? 'Free trial request' : 'Yêu cầu học thử', name, chosen].filter(Boolean).join(' · ');
+    const receipt = document.getElementById('registration-autoresponse');
+    const email = document.getElementById('student-email');
+    receipt.disabled = !email.value.trim() || !email.validity.valid;
+    receipt.value = english
+        ? 'Thank you for your free trial request to Nói Là Được – Talk English. This email acknowledges your request; it does not confirm a class time or enrol you in a paid course. George or An, Student Success Advisor in Vietnam, will contact you to agree a time in Vietnam (UTC+7). Your self-assessment is an initial suggestion; George will confirm suitability through a conversation. Please do not send passwords or payment details. Questions: hello@noiladuoc.com. https://noiladuoc.com/'
+        : 'Cảm ơn bạn đã gửi yêu cầu học thử miễn phí đến Nói Là Được – Talk English. Thư này xác nhận yêu cầu của bạn, chưa xác nhận giờ học và chưa đăng ký khóa học trả phí. George hoặc An, Student Success Advisor in Vietnam, sẽ liên hệ để thống nhất giờ học theo giờ Việt Nam (UTC+7). Tự đánh giá chỉ là gợi ý ban đầu; George sẽ trao đổi để xác nhận hướng học phù hợp. Vui lòng không gửi mật khẩu hoặc thông tin thanh toán. Liên hệ: hello@noiladuoc.com. https://noiladuoc.com/';
+}
+function refreshRegistrationPreview() {
+    const preview = document.getElementById('registration-preview');
+    if (preview) preview.textContent = buildRegistrationMessage();
+}
+
 if (enquiryForm) {
     enquiryForm.addEventListener('formdata', event => {
         // Replace machine keys and raw JSON with selected labels and explained results.
         const data = event.formData;
+        prepareRegistrationControls();
+        data.set('_subject', document.getElementById('registration-subject').value);
+        data.set('website_language', document.getElementById('registration-language').value);
+        data.delete('_autoresponse');
+        const receipt = document.getElementById('registration-autoresponse');
+        if (!receipt.disabled) data.set('_autoresponse', receipt.value);
         ['name','phone_zalo','email','referred_by','current_level','course_interest','interview_track_interest','learning_goal','preferred_time','message','consent','self_assessment'].forEach(key => data.delete(key));
         registrationEntries().forEach(([key,value]) => data.set(key,value));
     });
     enquiryForm.addEventListener('submit', () => {
-        const language = document.documentElement.lang || 'vi';
-        const languageField = document.getElementById('registration-language');
-        const subjectField = document.getElementById('registration-subject');
-        if (languageField) languageField.value = language === 'en' ? 'English' : 'Vietnamese';
-        if (subjectField) subjectField.value = language === 'en'
-            ? 'New Talk English Trial Registration'
-            : 'Đăng Ký Học Thử Talk English';
+        prepareRegistrationControls();
         showFormStatus('form_sending', 'sending');
     });
 
@@ -1005,7 +1051,28 @@ if (enquiryForm) {
             : 'Đăng Ký Buổi Học Thử Miễn Phí';
         const mailto = `mailto:hello@noiladuoc.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(buildRegistrationMessage())}`;
         window.location.href = mailto;
+        showFormStatus('form_opened');
     });
+}
+
+if (enquiryForm) {
+    enquiryForm.addEventListener('input', refreshRegistrationPreview);
+    enquiryForm.addEventListener('change', refreshRegistrationPreview);
+    document.getElementById('registration-review')?.addEventListener('toggle', refreshRegistrationPreview);
+    window.addEventListener('nld-assessment-updated', refreshRegistrationPreview);
+    languageButtons.forEach(button => button.addEventListener('click', refreshRegistrationPreview));
+    document.getElementById('registration-copy')?.addEventListener('click', async () => {
+        if (!enquiryForm.reportValidity()) return;
+        refreshRegistrationPreview();
+        try {
+            await navigator.clipboard.writeText(buildRegistrationMessage());
+            showFormStatus('form_copied');
+        } catch {
+            document.getElementById('registration-review').open = true;
+            showFormStatus('form_copy_failed');
+        }
+    });
+    refreshRegistrationPreview();
 }
 
 if (new URLSearchParams(window.location.search).get('registration') === 'success') {

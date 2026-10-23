@@ -92,6 +92,15 @@
 </div>
 </div>
 </section>
+<section aria-labelledby="free-assessment-heading" class="section free-assessment-promo" id="free-assessment">
+<div class="free-assessment-inner">
+<div><p class="section-label" data-i18n="promo_label">Tư vấn và đánh giá ban đầu miễn phí</p>
+<h2 id="free-assessment-heading" data-i18n="promo_title">Bắt đầu nói tiếng Anh tự tin hơn</h2>
+<p class="lead" data-i18n="promo_intro">Bạn chưa biết nên bắt đầu từ đâu? Làm bài tự đánh giá ngắn, sau đó trao đổi cùng Teacher George để chọn khóa học phù hợp với mục tiêu và nhu cầu của bạn.</p>
+<p data-i18n="promo_practical">Tiếng Anh cơ bản, thực tế cho cuộc sống và công việc. Kết quả tự đánh giá gợi ý điểm bắt đầu; George sẽ xác nhận trong buổi học thử qua Microsoft Teams.</p>
+<div class="hero-actions"><a class="button button-primary" href="#self-assessment" data-i18n="promo_find">Tìm khóa học phù hợp</a><a class="button button-secondary" href="#trial-form" data-i18n="promo_register">Đăng ký tư vấn miễn phí</a></div></div>
+<div class="free-assessment-details"><h3 data-i18n="promo_free">Miễn phí. Không bắt buộc đăng ký khóa học.</h3><ul><li data-i18n="promo_step_1">Chọn mục tiêu và làm bài tự đánh giá.</li><li data-i18n="promo_step_2">Gửi yêu cầu và thời gian phù hợp theo giờ Việt Nam.</li><li data-i18n="promo_step_3">Nhận lịch xác nhận để trao đổi trực tiếp với George.</li></ul><p data-i18n="promo_an">An — Student Success Advisor in Vietnam — hỗ trợ bằng tiếng Việt về đăng ký và thông tin lớp học.</p><p class="form-note" data-i18n="promo_terms">Học phí, lịch học và điều kiện đăng ký được xác nhận trước khi thanh toán. Yêu cầu tư vấn không tạo tài khoản hay giữ chỗ trong khóa học.</p></div>
+</div></section>
 <section aria-labelledby="portal-login-title" class="section portal-login-section" id="portal-login">
 <div class="portal-login-heading"><p class="section-label" data-i18n="portal_label">Cổng học tập riêng</p><h2 id="portal-login-title" data-i18n="portal_title">Đăng nhập Nói Là Được</h2><p data-i18n="portal_intro">Chọn lối vào của bạn để truy cập tài liệu, luyện tập tự chọn và quản lý học viên.</p></div>
 <div class="portal-login-grid">
@@ -102,7 +111,7 @@
 </article>
 <article class="portal-login-card">
 <h3 data-i18n="portal_advisor_title">An · Student Success Advisor in Vietnam</h3>
-<p data-i18n="portal_advisor_copy">Đăng ký học viên, quản lý lịch học và mật khẩu học viên.</p>
+<p data-i18n="portal_advisor_copy">Hỗ trợ đăng ký, lịch học và mật khẩu cho học viên Việt Nam được phân công.</p>
 <a class="button button-primary" data-i18n="portal_advisor_login" href="https://noiladuoc-students.pages.dev">Đăng nhập Cố vấn Học viên tại Việt Nam</a>
 </article>
 <article class="portal-login-card">
@@ -500,13 +509,14 @@
 <input name="_next" type="hidden" value="https://noiladuoc.com/?registration=success#trial-form">
 <input name="source_page" type="hidden" value="https://noiladuoc.com/">
 <input id="registration-language" name="website_language" type="hidden" value="Vietnamese">
+<input id="registration-autoresponse" name="_autoresponse" type="hidden" disabled>
 <label>
 <span data-i18n="form_name">Họ và tên</span>
-<input autocomplete="name" id="student-name" name="name" required="" type="text">
+<input autocomplete="name" id="student-name" name="name" required="" maxlength="120" type="text">
 </label>
 <label>
 <span data-i18n="form_zalo">Số điện thoại / Zalo</span>
-<input autocomplete="tel" id="student-zalo" inputmode="tel" name="phone_zalo" required="" type="tel">
+<input autocomplete="tel" id="student-zalo" maxlength="40" inputmode="tel" name="phone_zalo" required="" type="tel">
 </label>
 <label>
 <span data-i18n="form_email_optional">Email (không bắt buộc)</span>
@@ -539,7 +549,7 @@
 </select>
 </label>
 <label>
-<span data-i18n="form_time">Thời gian học phù hợp</span>
+<span data-i18n="form_time">Thời gian học phù hợp · giờ Việt Nam (UTC+7)</span>
 <select id="student-time" name="preferred_time" required="">
 <option data-i18n="form_choose" value="">Vui lòng chọn</option>
 <option data-i18n="time_morning" value="Morning">Buổi sáng</option>
@@ -551,17 +561,20 @@
 </label>
 <label class="form-full">
 <span data-i18n="form_message">Tin nhắn</span>
-<textarea data-i18n-placeholder="form_message_placeholder" id="student-message" name="message" placeholder="Bạn có thể cho chúng tôi biết thêm về mục tiêu hoặc câu hỏi của bạn." rows="5"></textarea>
+<textarea data-i18n-placeholder="form_message_placeholder" id="student-message" maxlength="2000" name="message" placeholder="Bạn có thể cho chúng tôi biết thêm về mục tiêu hoặc câu hỏi của bạn." rows="5"></textarea>
 </label>
 <label class="consent-row form-full">
 <input id="student-consent" name="consent" required="" type="checkbox" value="Agreed">
 <span data-i18n="form_consent">Tôi đồng ý để Talk English liên hệ với tôi về buổi học thử và chương trình học.</span>
 </label>
+<details class="registration-review form-full" id="registration-review"><summary data-i18n="form_review">Xem lại thông tin và gợi ý trước khi gửi</summary><pre id="registration-preview"></pre></details>
 <div class="form-actions form-full">
 <button class="button button-primary" data-i18n="form_submit" id="registration-submit" type="submit">Gửi Đăng Ký Trực Tiếp</button>
 <button class="button button-secondary" data-i18n="form_email_both" id="registration-email" type="button">Gửi Bằng Ứng Dụng Email</button>
+<button class="button button-secondary" data-i18n="form_copy" id="registration-copy" type="button">Sao chép nội dung</button>
 <a class="button button-secondary" data-i18n="form_zalo_option" href="#contact">Quét Zalo Của An</a>
 </div>
+<p class="form-note form-full" data-i18n="form_delivery_note">Có email: bạn có thể nhận thư xác nhận yêu cầu sau khi gửi trực tiếp. Không có email: An hoặc George liên hệ qua điện thoại/Zalo. Nút email mở thư nháp; bạn cần tự bấm Gửi.</p>
 <p aria-live="polite" class="form-status form-full" id="form-status" role="status"></p>
 <p class="form-note form-full" data-i18n="form_note">Đăng ký trực tiếp được gửi đến hello@noiladuoc.com. Bạn cũng có thể dùng ứng dụng email hoặc liên hệ An qua Zalo.</p>
 </form>
