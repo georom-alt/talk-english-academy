@@ -2260,3 +2260,17 @@ html[lang="en"] .assessment-vi,html:not([lang="en"]) .assessment-en{display:none
 #registration-assessment { min-width: 0; margin: 0; border: 1px solid var(--border, #d9e2df); border-radius: 16px; padding: 20px; }
 #registration-assessment legend { font-weight: 700; padding: 0 8px; }
 #registration-assessment-result { margin: 0; overflow-wrap: anywhere; }
+
+
+/* The optional assessment uses a light panel inside the dark registration area. */
+#registration-assessment-details,
+#registration-assessment-details p,
+#registration-assessment-details legend,
+#registration-assessment-details label {
+    color: #17313b;
+}
+#registration-assessment-details label {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
