@@ -24,6 +24,8 @@ if(typeof module!=='undefined'&&module.exports){module.exports={recommend};retur
 const form=document.getElementById('course-assessment');if(!form)return;
 const result=document.getElementById('assessment-result'),course=document.getElementById('student-course'),track=document.getElementById('student-interview-track'),registration=document.getElementById('enquiry-form');
 let current=null,answers=null;
+const attempts=[];
+let recordedSignature=null;
 const text={
  foundation:['Bạn cho biết cần nhiều hỗ trợ để nói, hoặc câu trả lời cho thấy nên củng cố câu đơn giản trước. Bắt đầu với Beginner English, rồi tiến tới mục tiêu đã chọn. Đây là gợi ý điểm bắt đầu, không phải kết luận về trình độ nói.','Your speaking self-report or combined answers suggest building simple sentences first. Start with Beginner English, then progress toward your goal. This is a starting suggestion, not a finding about your speaking level.'],
  beginner:['Bạn muốn học nền tảng. Beginner English giúp luyện giới thiệu bản thân, câu hỏi và câu trả lời đơn giản.','You asked for foundation study. Beginner English focuses on introductions, simple questions and answers.'],
@@ -53,7 +55,7 @@ function description(){
  if(current.score!==null)parts.push(t('limit'));return parts.join('\n');
 }
 function questionLabel(sel){const root=sel.closest('label');return root?.querySelector(en()?'.assessment-en':'.assessment-vi')?.textContent.trim()||sel.name;}
-function report(){
+function currentReport(){
  if(!current)return t('noAssessment');
  const lines=[(en()?'Suggested starting course: ':'Khóa học nên bắt đầu: ')+label(current.course)+(current.track?' — '+current.track:''),description(),''];
  form.querySelectorAll('select').forEach(sel=>{
@@ -64,7 +66,19 @@ function report(){
  });
  return lines.join('\n');
 }
-window.NLDassessment={report,recommendation:()=>current?label(current.course):'',description};
+function report(){
+ if(!attempts.length)return t('noAssessment');
+ return attempts.map((a,i)=>(en()?'Assessment attempt ':'Lần tự đánh giá ')+(i+1)+' — '+a.time+'\n'+a.report).join('\n\n');
+}
+function recordAttempt(force=false){
+ if(!current||!answers)return;
+ const signature=JSON.stringify(answers);
+ if(!force&&recordedSignature===signature)return;
+ attempts.push({time:new Date().toISOString()+' (UTC)',report:currentReport(),course:current.course});
+ recordedSignature=signature;
+ window.dispatchEvent(new Event('nld-assessment-updated'));
+}
+window.NLDassessment={report,recommendation:()=>current?label(current.course):attempts.length?label(attempts[attempts.length-1].course):'',description};
 function render(){
  form.querySelectorAll('[data-assessment-vi]').forEach(o=>{o.textContent=en()?o.dataset.assessmentEn:o.dataset.assessmentVi;});
  if(!current)return;
@@ -73,7 +87,7 @@ function render(){
  window.dispatchEvent(new Event('nld-assessment-updated'));
 }
 function clear(){current=null;answers=null;result.hidden=true;registration.querySelector('[name="self_assessment"]')?.remove();window.dispatchEvent(new Event('nld-assessment-updated'));}
-form.addEventListener('submit',e=>{e.preventDefault();if(!form.reportValidity())return;answers=Object.fromEntries(new FormData(form));current=recommend(answers);result.hidden=false;render();result.focus();result.scrollIntoView({behavior:'smooth',block:'center'});});
+form.addEventListener('submit',e=>{e.preventDefault();if(!form.reportValidity())return;answers=Object.fromEntries(new FormData(form));current=recommend(answers);recordAttempt(true);result.hidden=false;render();result.focus();result.scrollIntoView({behavior:'smooth',block:'center'});});
 function syncAudience(){const child=form.elements.audience.value==='kids';form.querySelectorAll('[data-assessment-group]').forEach(group=>{const hide=group.dataset.assessmentGroup===(child?'adult':'child');group.hidden=hide;group.querySelectorAll('select').forEach(sel=>{sel.disabled=hide;});});}
 form.addEventListener('change',()=>{clear();syncAudience();});form.addEventListener('reset',()=>{clear();setTimeout(syncAudience,0);});
 syncAudience();
@@ -84,12 +98,28 @@ if(inline){
  function mirror(){
   inline.querySelectorAll('[data-assessment-name]').forEach(sel=>{
    const original=form.elements.namedItem(sel.dataset.assessmentName);
-   sel.value=original.value;sel.disabled=original.disabled;sel.required=original.required;
+   sel.value=original.value;sel.disabled=original.disabled;sel.required=false;
    sel.closest('[data-assessment-group]').hidden=original.closest('[data-assessment-group]').hidden;
   });
   summary.textContent=current?(en()?'Suggested starting course: ':'Khóa học nên bắt đầu: ')+label(current.course)+'\n'+description():'';
   summary.style.whiteSpace='pre-line';
+  const status=document.getElementById('registration-assessment-status');
+  status.textContent=attempts.length?(en()?'✓ Completed assessment included with registration. Attempts: ':'✓ Kết quả tự đánh giá được kèm theo đăng ký. Số lần: ')+attempts.length:'';
  }
+ function completeInline(force=false){
+  if(!form.checkValidity())return false;
+  answers=Object.fromEntries(new FormData(form));current=recommend(answers);
+  recordAttempt(force);render();mirror();return true;
+ }
+ document.getElementById('registration-assessment-complete').addEventListener('click',()=>{
+  if(!completeInline(true)){
+   summary.textContent=en()?'Answer the remaining questions to see a recommendation, or skip this section and register.':'Trả lời các câu còn lại để xem gợi ý, hoặc bỏ qua phần này và gửi đăng ký.';
+  }
+ });
+ // Archive once before any actual payload is built, without making optional answers required.
+ registration.addEventListener('submit',()=>completeInline(),true);
+ registration.addEventListener('formdata',()=>completeInline(),true);
+ ['registration-email','registration-copy'].forEach(id=>document.getElementById(id)?.addEventListener('click',()=>completeInline(),true));
  inline.addEventListener('change',e=>{
   const sel=e.target.closest('[data-assessment-name]');if(!sel)return;
   form.elements.namedItem(sel.dataset.assessmentName).value=sel.value;
@@ -114,3 +144,4 @@ if(inline){
 document.getElementById('assessment-register').addEventListener('click',()=>{if(!current)return;course.value=current.course;course.dispatchEvent(new Event('change',{bubbles:true}));if(track&&!track.disabled)track.value=current.track;document.getElementById('student-name')?.focus({preventScroll:true});});
 render();new MutationObserver(render).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
 })();
+
