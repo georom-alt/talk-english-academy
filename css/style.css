@@ -2256,3 +2256,7 @@ html[lang="en"] .assessment-vi,html:not([lang="en"]) .assessment-en{display:none
 .registration-review summary{cursor:pointer;color:var(--navy);font-weight:700}.registration-review pre{font:inherit;line-height:1.65;white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%;margin:1rem 0 0}
 #free-assessment,#self-assessment,#trial-form{scroll-margin-top:110px}
 @media(max-width:780px){.free-assessment-inner{grid-template-columns:1fr;gap:1rem}.free-assessment-promo .button{width:100%}.free-assessment-details{padding:1.1rem}}
+
+#registration-assessment { min-width: 0; margin: 0; border: 1px solid var(--border, #d9e2df); border-radius: 16px; padding: 20px; }
+#registration-assessment legend { font-weight: 700; padding: 0 8px; }
+#registration-assessment-result { margin: 0; overflow-wrap: anywhere; }

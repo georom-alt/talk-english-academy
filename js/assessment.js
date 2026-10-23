@@ -77,6 +77,40 @@ form.addEventListener('submit',e=>{e.preventDefault();if(!form.reportValidity())
 function syncAudience(){const child=form.elements.audience.value==='kids';form.querySelectorAll('[data-assessment-group]').forEach(group=>{const hide=group.dataset.assessmentGroup===(child?'adult':'child');group.hidden=hide;group.querySelectorAll('select').forEach(sel=>{sel.disabled=hide;});});}
 form.addEventListener('change',()=>{clear();syncAudience();});form.addEventListener('reset',()=>{clear();setTimeout(syncAudience,0);});
 syncAudience();
+// Registration contains the same questions; keep one set of answers and one recommendation.
+const inline=document.getElementById('registration-assessment');
+if(inline){
+ const summary=document.getElementById('registration-assessment-result');
+ function mirror(){
+  inline.querySelectorAll('[data-assessment-name]').forEach(sel=>{
+   const original=form.elements.namedItem(sel.dataset.assessmentName);
+   sel.value=original.value;sel.disabled=original.disabled;sel.required=original.required;
+   sel.closest('[data-assessment-group]').hidden=original.closest('[data-assessment-group]').hidden;
+  });
+  summary.textContent=current?(en()?'Suggested starting course: ':'Khóa học nên bắt đầu: ')+label(current.course)+'\n'+description():'';
+  summary.style.whiteSpace='pre-line';
+ }
+ inline.addEventListener('change',e=>{
+  const sel=e.target.closest('[data-assessment-name]');if(!sel)return;
+  form.elements.namedItem(sel.dataset.assessmentName).value=sel.value;
+  clear();syncAudience();
+  if(form.checkValidity()){
+   answers=Object.fromEntries(new FormData(form));current=recommend(answers);
+   result.hidden=false;render();course.value=current.course;course.dispatchEvent(new Event('change',{bubbles:true}));
+   if(track&&!track.disabled)track.value=current.track;
+  }
+  mirror();window.dispatchEvent(new Event('nld-assessment-updated'));
+ });
+ form.addEventListener('change',mirror);
+ form.addEventListener('submit',mirror);
+ form.addEventListener('reset',()=>setTimeout(mirror,0));
+ registration.addEventListener('reset',()=>{form.reset();setTimeout(mirror,0);});
+ window.addEventListener('nld-assessment-updated',mirror);
+ new MutationObserver(()=>{
+  inline.querySelectorAll('[data-assessment-vi]').forEach(o=>{o.textContent=en()?o.dataset.assessmentEn:o.dataset.assessmentVi;});mirror();
+ }).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
+ mirror();
+}
 document.getElementById('assessment-register').addEventListener('click',()=>{if(!current)return;course.value=current.course;course.dispatchEvent(new Event('change',{bubbles:true}));if(track&&!track.disabled)track.value=current.track;document.getElementById('student-name')?.focus({preventScroll:true});});
 render();new MutationObserver(render).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
 })();
