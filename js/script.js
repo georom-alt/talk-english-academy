@@ -960,7 +960,7 @@ function registrationEntries() {
     return [
         ['name', value('name')],
         ['Phone / Zalo · Điện thoại', value('phone_zalo')],
-        ['email', value('email') || 'Not provided / Không cung cấp'],
+        ['email', value('email')],
         ['Referred by · Người giới thiệu', value('referred_by') || 'Not provided / Không cung cấp'],
         ['Current level (self-reported) · Tự đánh giá', selected('student-level')],
         ['Course interest · Khóa học quan tâm', selected('student-course')],
