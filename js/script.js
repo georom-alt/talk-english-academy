@@ -953,41 +953,38 @@ function showFormStatus(key, state = '') {
     formStatus.dataset.state = state;
 }
 
-function buildRegistrationMessage() {
-    const language = document.documentElement.lang || 'vi';
-    const formData = new FormData(enquiryForm);
-    const labels = language === 'en'
-        ? {
-            heading: 'Talk English – Free Trial Lesson Registration',
-            name: 'Name', phone: 'Phone / Zalo', email: 'Email',
-            referred: 'Referred by', level: 'Current level', goal: 'Learning goal',
-            time: 'Preferred class time', message: 'Message'
-          }
-        : {
-            heading: 'Talk English – Đăng Ký Buổi Học Thử Miễn Phí',
-            name: 'Họ và tên', phone: 'Điện thoại / Zalo', email: 'Email',
-            referred: 'Người giới thiệu', level: 'Trình độ hiện tại', goal: 'Mục tiêu học',
-            time: 'Thời gian phù hợp', message: 'Tin nhắn'
-          };
-
+// Use the same readable fields for native FormSubmit and the email-app fallback.
+function registrationEntries() {
+    const value = name => enquiryForm.elements.namedItem(name)?.value?.trim() || '';
+    const selected = id => document.getElementById(id)?.selectedOptions[0]?.textContent.trim() || '';
     return [
-        labels.heading,
-        '',
-        `${labels.name}: ${formData.get('name') || ''}`,
-        `${labels.phone}: ${formData.get('phone_zalo') || ''}`,
-        `${labels.email}: ${formData.get('email') || (language === 'en' ? 'Not provided' : 'Không cung cấp')}`,
-        `${labels.referred}: ${formData.get('referred_by') || (language === 'en' ? 'Not provided' : 'Không cung cấp')}`,
-        `${labels.level}: ${formData.get('current_level') || ''}`,
-        `${labels.goal}: ${formData.get('learning_goal') || ''}`,
-        `${language === 'en' ? 'Course of interest' : 'Khóa học quan tâm'}: ${document.getElementById('student-course')?.selectedOptions[0]?.textContent || ''}`,
-        ...(formData.get('interview_track_interest') ? [`${language === 'en' ? 'Interview track interest' : 'Lộ trình phỏng vấn quan tâm'}: ${formData.get('interview_track_interest')}`] : []),
-        ...(formData.get('self_assessment') ? [`Self-assessment: ${formData.get('self_assessment')}`] : []),
-        `${labels.time}: ${formData.get('preferred_time') || ''}`,
-        `${labels.message}: ${formData.get('message') || (language === 'en' ? 'None' : 'Không có')}`
-    ].join('\n');
+        ['name', value('name')],
+        ['Phone / Zalo · Điện thoại', value('phone_zalo')],
+        ['email', value('email') || 'Not provided / Không cung cấp'],
+        ['Referred by · Người giới thiệu', value('referred_by') || 'Not provided / Không cung cấp'],
+        ['Current level (self-reported) · Tự đánh giá', selected('student-level')],
+        ['Course interest · Khóa học quan tâm', selected('student-course')],
+        ['Interview track interest · Lộ trình phỏng vấn', value('interview_track_interest') ? selected('student-interview-track') : 'Discuss with George / Trao đổi với George'],
+        ['Learning goal · Mục tiêu', selected('student-goal')],
+        ['Preferred time · Thời gian phù hợp', selected('student-time')],
+        ['Time zone · Múi giờ', 'Vietnam / Asia/Ho_Chi_Minh (UTC+7); confirm availability / xác nhận lịch'],
+        ['Message · Tin nhắn', value('message') || 'None / Không có'],
+        ['Consent · Đồng ý liên hệ', enquiryForm.elements.namedItem('consent')?.checked ? 'Agreed / Đồng ý' : 'Not agreed / Chưa đồng ý'],
+        ['Suggested starting course · Gợi ý bắt đầu', window.NLDassessment?.recommendation() || 'Trial assessment needed / Cần buổi học thử'],
+        ['Assessment summary · Kết quả và câu trả lời', window.NLDassessment?.report() || 'No self-assessment completed / Chưa làm tự đánh giá']
+    ];
+}
+function buildRegistrationMessage() {
+    return ['Nói Là Được – Talk English · Free trial / Học thử', '', ...registrationEntries().map(([key,value]) => key + ': ' + value)].join('\n');
 }
 
 if (enquiryForm) {
+    enquiryForm.addEventListener('formdata', event => {
+        // Replace machine keys and raw JSON with selected labels and explained results.
+        const data = event.formData;
+        ['name','phone_zalo','email','referred_by','current_level','course_interest','interview_track_interest','learning_goal','preferred_time','message','consent','self_assessment'].forEach(key => data.delete(key));
+        registrationEntries().forEach(([key,value]) => data.set(key,value));
+    });
     enquiryForm.addEventListener('submit', () => {
         const language = document.documentElement.lang || 'vi';
         const languageField = document.getElementById('registration-language');

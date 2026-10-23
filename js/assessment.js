@@ -1,48 +1,81 @@
-/* Goal-based course guidance; the short quiz is not a proficiency certificate. */
+/* Practical course guidance. A short written check does not measure speaking level. */
 (function () {
 'use strict';
+const courses=['beginner','daily','business','interview','cruise','hotel','office-it','manufacturing-construction','maritime','massage-spa','nail','restaurant-service','warehousing-logistics','love-across-borders','corporate-a1','corporate-a2'];
 function recommend(a) {
  const score=['q1','q2','q3','q4','q5','q6'].reduce((n,k)=>n+(a[k]==='1'?1:0),0);
- const support=a.confidence==='0'||a.skill==='start'||a.experience==='never'||score<3;
- if(a.audience==='kids')return {course:'kids',track:'',score,reason:'kids',support:false};
- const allowed=['beginner','daily','business','interview','cruise','hotel','office-it','manufacturing-construction','maritime','massage-spa','nail','restaurant-service','warehousing-logistics','love-across-borders','corporate-a1','corporate-a2'];
- let course,reason;
- if(allowed.includes(a.interest)){course=a.interest;reason='interest';}
- else if(a.task==='interview'||a.goal==='interview'){course='interview';reason='task';}
- else if(a.goal==='corporate'){course=a.confidence==='2'&&score>=5&&a.experience==='independent'?'corporate-a2':'corporate-a1';reason='corporate';}
- else if(a.task==='relationship'||a.goal==='relationship'){course='love-across-borders';reason='relationship';}
- else if(a.sector&&a.sector!=='general'){course=a.sector;reason='sector';}
- else if(a.task==='business'||a.goal==='business'){course='business';reason='task';}
- else if(a.task==='service'){course='restaurant-service';reason='service';}
- else {course=a.confidence==='0'&&a.skill==='start'?'beginner':'daily';reason='goal';}
- const track=course==='interview'?(a.confidence==='2'&&score>=5&&a.experience==='independent'?'advanced':'beginner'):'';
- return {course,track,score,reason,support,urgent:a.urgency==='now',practice:a.practice,skill:a.skill};
+ if(a.audience==='kids')return {course:'kids',track:'',score:null,reason:'kids',support:false,next:''};
+ const independent=a.confidence==='2'&&a.experience==='independent'&&score>=5;
+ let target='daily',reason='daily';
+ if(a.goal==='corporate'){target=independent?'corporate-a2':'corporate-a1';reason='corporate';}
+ else if(a.task==='interview'||a.goal==='interview'){target='interview';reason='interview';}
+ else if(a.task==='relationship'||a.goal==='relationship'){target='love-across-borders';reason='relationship';}
+ else if(courses.includes(a.sector)&&!['beginner','daily','business'].includes(a.sector)){target=a.sector;reason='sector';}
+ else if(a.task==='business'||a.goal==='business'){target='business';reason='business';}
+ else if(a.task==='service'){target='restaurant-service';reason='service';}
+ else if(!a.task&&!a.goal&&courses.includes(a.interest)){target=a.interest;reason='interest';}
+ const foundation=a.confidence==='0'||(a.skill==='start'&&a.experience==='never')||(score<=2&&a.confidence!=='2');
+ const chosenBeginner=a.interest==='beginner';
+ const course=foundation||chosenBeginner?'beginner':target;
+ const next=course==='beginner'&&target!=='beginner'?target:'';
+ return {course,next,track:course==='interview'?(independent?'advanced':'beginner'):'',score,reason:foundation?'foundation':chosenBeginner?'beginner':reason,support:foundation||a.skill==='start'||a.experience==='never'||score<3,urgent:a.urgency==='now',practice:a.practice,skill:a.skill,interest:a.interest,target};
 }
 if(typeof module!=='undefined'&&module.exports){module.exports={recommend};return;}
 const form=document.getElementById('course-assessment');if(!form)return;
 const result=document.getElementById('assessment-result'),course=document.getElementById('student-course'),track=document.getElementById('student-interview-track'),registration=document.getElementById('enquiry-form');
-let current=null;
-const reasons={
- interest:['Bạn đã chọn khóa học này là sở thích chính. Điểm tiếng Anh không thay đổi lựa chọn đó.','You selected this course as your main interest. Your English score does not override that choice.'],
- task:['Khóa học phù hợp với công việc giao tiếp bạn cần thực hiện.','The course matches the communication task you need to perform.'],
- service:['Gợi ý Nhà hàng và Dịch vụ khách hàng vì bạn chọn giao tiếp với khách nhưng chưa chọn ngành cụ thể. George sẽ xác nhận bối cảnh trước khi xếp lớp.','Restaurant and Customer Service is suggested because you chose customer communication without a specific industry. George will confirm the setting before placement.'],
- kids:['Gợi ý chương trình trẻ em. George sẽ trao đổi với phụ huynh để chọn nhóm tuổi và hoạt động phù hợp.','Suggested Kids programme. George will discuss the age group and suitable activities with the parent.'],
- foundation:['Nên xây dựng nền tảng trước, sau đó chuyển sang mục tiêu hoặc môi trường bạn đã chọn.','Build your foundation first, then move toward your selected goal or work setting.'],
- interview:['Theo mục tiêu phỏng vấn và câu trả lời của bạn. Lộ trình sẽ được xác nhận sau phần nói.','Based on your interview goal and answers. The track will be confirmed after a speaking sample.'],
- corporate:['Gợi ý cho nhu cầu học theo nhóm doanh nghiệp; George cần xác nhận mức phù hợp của cả nhóm.','Suggested for a corporate group; George needs to confirm suitability for the whole group.'],
- relationship:['Theo mục tiêu giao tiếp trong mối quan hệ xuyên văn hóa. Chương trình chỉ dành cho người từ 18 tuổi.','Based on your cross-cultural relationship goal. This programme is for adults aged 18 and over.'],
- sector:['Theo môi trường làm việc bạn chọn. Đây là tiếng Anh thực tế, không phải đào tạo hay chứng chỉ nghề.','Based on your chosen work setting. This is practical English, not occupational training or certification.'],
- goal:['Theo mục tiêu giao tiếp và câu trả lời của bạn.','Based on your communication goal and answers.']};
-function label(key){return Array.from(course.options).find(o=>o.value===key)?.textContent||key;}
-function summary(){return JSON.stringify({version:2,...Object.fromEntries(new FormData(form)),recommendation:current.course,track:current.track,quiz_score:current.score,follow_on_interest:current.next||''});}
-function render(){const en=document.documentElement.lang==='en';form.querySelectorAll('[data-assessment-vi]').forEach(o=>{o.textContent=en?o.dataset.assessmentEn:o.dataset.assessmentVi;});if(!current)return;document.getElementById('assessment-course').textContent=label(current.course)+(current.track?' — '+(current.track==='advanced'?'Advanced':'Beginner'):'');document.getElementById('assessment-reason').textContent=reasons[current.reason][en?1:0]+(current.reason==='kids'?'':` ${en?'Short English check':'Câu hỏi tiếng Anh'}: ${current.score}/6.`)+(current.support?(en?' Extra foundation and speaking support is suggested within your chosen goal; confirm this in the trial.':' Nên bổ sung hỗ trợ nền tảng và luyện nói theo mục tiêu đã chọn; xác nhận trong buổi học thử.'):'')+(current.urgent?(en?' Your deadline is this month: discuss a focused plan with George.':' Bạn cần sử dụng trong tháng này: trao đổi với George về kế hoạch tập trung.'):'')+(current.practice==='little'?(en?' Outside practice is optional. We can focus on essentials together in class.':' Luyện tập ngoài giờ là tự chọn. Chúng ta có thể cùng luyện phần quan trọng trong lớp.'):'')+(current.next?` ${en?'Follow-on interest':'Mục tiêu tiếp theo'}: ${label(current.next)}.`:'');}
-function clear(){current=null;result.hidden=true;registration.querySelector('[name="self_assessment"]')?.remove();}
-form.addEventListener('submit',e=>{e.preventDefault();if(!form.reportValidity())return;current=recommend(Object.fromEntries(new FormData(form)));result.hidden=false;render();result.focus();});
+let current=null,answers=null;
+const text={
+ foundation:['Bạn cho biết cần nhiều hỗ trợ để nói, hoặc câu trả lời cho thấy nên củng cố câu đơn giản trước. Bắt đầu với Beginner English, rồi tiến tới mục tiêu đã chọn. Đây là gợi ý điểm bắt đầu, không phải kết luận về trình độ nói.','Your speaking self-report or combined answers suggest building simple sentences first. Start with Beginner English, then progress toward your goal. This is a starting suggestion, not a finding about your speaking level.'],
+ beginner:['Bạn muốn học nền tảng. Beginner English giúp luyện giới thiệu bản thân, câu hỏi và câu trả lời đơn giản.','You asked for foundation study. Beginner English focuses on introductions, simple questions and answers.'],
+ daily:['Mục tiêu của bạn là trò chuyện hằng ngày. Luyện hội thoại ngắn, nghe câu hỏi và trả lời tiếp nối theo tình huống quen thuộc.','Your goal is everyday conversation. Practise short conversations, understanding questions and giving follow-up replies in familiar situations.'],
+ business:['Bạn cần họp, email hoặc trao đổi với đồng nghiệp. Luyện cập nhật công việc, hỏi lại và diễn đạt yêu cầu đơn giản.','You need meetings, emails or colleague communication. Practise work updates, clarification and simple requests.'],
+ interview:['Bạn cần ứng tuyển hoặc phỏng vấn. Luyện giới thiệu kinh nghiệm và trả lời câu hỏi; George sẽ xác nhận lộ trình qua phần nói.','You need job applications or interviews. Practise describing experience and answering questions; George will confirm the track through a speaking sample.'],
+ corporate:['Bạn chọn chương trình cho nhóm doanh nghiệp. George cần xác nhận nhu cầu và khả năng giao tiếp của cả nhóm trước khi xếp lớp.','You selected corporate group learning. George needs to confirm the group’s needs and communication ability before placement.'],
+ sector:['Môi trường làm việc bạn chọn quyết định chủ đề luyện tập. Đây là tiếng Anh thực tế, không phải đào tạo hay chứng chỉ nghề.','Your work setting determines the practice topics. This is practical English, not occupational training or certification.'],
+ service:['Bạn cần trao đổi với khách nhưng chưa chọn ngành. Gợi ý Nhà hàng và Dịch vụ khách hàng; George sẽ xác nhận tình huống cụ thể.','You need customer communication without a specific industry. Restaurant and Customer Service is suggested; George will confirm the actual setting.'],
+ relationship:['Bạn muốn giao tiếp trong mối quan hệ xuyên văn hóa. Chương trình dành cho người từ 18 tuổi, tập trung giao tiếp rõ ràng, tôn trọng và an toàn.','You want cross-cultural relationship communication. This age-18+ programme focuses on clear, respectful and safe communication.'],
+ interest:['Gợi ý theo sở thích đã chọn; cần bổ sung mục tiêu và phần nói để xác nhận.','Suggested from your interest; goals and a speaking sample are needed for confirmation.'],
+ kids:['Phụ huynh chọn chương trình cho trẻ. George sẽ trao đổi về nhóm tuổi, hoạt động và sự hỗ trợ phù hợp.','A parent selected the Kids programme. George will discuss age group, activities and suitable support.'],
+ limit:['Câu hỏi viết ngắn không đo phát âm, nghe trực tiếp hay mức CEFR. George sẽ xác nhận điểm bắt đầu trong buổi học thử.','The short written check does not measure pronunciation, live listening or CEFR level. George will confirm the starting point in the trial.'],
+ next:['Mục tiêu tiếp theo','Follow-on goal'], support:['Trọng tâm hỗ trợ','Support focus'], check:['Câu hỏi tiếng Anh','Short English check'], correct:['đúng','correct'], wrong:['cần xem lại','review needed'], noAssessment:['Chưa làm tự đánh giá; trao đổi trong buổi học thử.','No self-assessment completed; discuss during the trial.']};
+const support={start:['Tạo câu đơn giản và bắt đầu nói.','Form simple sentences and start speaking.'],listen:['Nghe câu hỏi, nhận biết từ khóa và yêu cầu nói lại.','Understand questions, identify key words and ask for repetition.'],reply:['Trả lời câu hỏi tiếp nối và kéo dài hội thoại.','Answer follow-up questions and extend a conversation.'],words:['Tìm từ phù hợp và luyện cụm từ dùng trong tình huống thật.','Find useful words and practise phrases for real situations.']};
+const en=()=>document.documentElement.lang==='en';
+const t=k=>text[k][en()?1:0];
+function label(key){return Array.from(course.options).find(o=>o.value===key)?.textContent.trim()||key;}
+function description(){
+ if(!current)return t('noAssessment');
+ const parts=[t(current.reason)];
+ if(current.next)parts.push(t('next')+': '+label(current.next)+'.');
+ if(current.skill&&support[current.skill])parts.push(t('support')+': '+support[current.skill][en()?1:0]);
+ if(current.score!==null)parts.push(t('check')+': '+current.score+'/6.');
+ if(current.urgent)parts.push(en()?'You need English this month: discuss a focused plan with George.':'Bạn cần tiếng Anh trong tháng này: trao đổi kế hoạch tập trung với George.');
+ if(current.practice==='little')parts.push(en()?'Outside practice is optional; focus on essentials in class.':'Luyện tập ngoài giờ là tự chọn; tập trung phần quan trọng trong lớp.');
+ if(current.score!==null)parts.push(t('limit'));return parts.join('\n');
+}
+function questionLabel(sel){const root=sel.closest('label');return root?.querySelector(en()?'.assessment-en':'.assessment-vi')?.textContent.trim()||sel.name;}
+function report(){
+ if(!current)return t('noAssessment');
+ const lines=[(en()?'Suggested starting course: ':'Khóa học nên bắt đầu: ')+label(current.course)+(current.track?' — '+current.track:''),description(),''];
+ form.querySelectorAll('select').forEach(sel=>{
+  if(sel.disabled||!answers?.[sel.name])return;
+  const opt=Array.from(sel.options).find(o=>o.value===answers[sel.name]);
+  const value=(en()?opt?.dataset.assessmentEn:opt?.dataset.assessmentVi)||opt?.textContent.trim()||'';
+  lines.push(questionLabel(sel)+': '+value+(/^q[1-6]$/.test(sel.name)?' ['+t(answers[sel.name]==='1'?'correct':'wrong')+']':''));
+ });
+ return lines.join('\n');
+}
+window.NLDassessment={report,recommendation:()=>current?label(current.course):'',description};
+function render(){
+ form.querySelectorAll('[data-assessment-vi]').forEach(o=>{o.textContent=en()?o.dataset.assessmentEn:o.dataset.assessmentVi;});
+ if(!current)return;
+ document.getElementById('assessment-course').textContent=(en()?'Start with: ':'Nên bắt đầu với: ')+label(current.course)+(current.track?' — '+(current.track==='advanced'?'Advanced':'Beginner'):'');
+ const reason=document.getElementById('assessment-reason');reason.textContent=description();reason.style.whiteSpace='pre-line';
+}
+function clear(){current=null;answers=null;result.hidden=true;registration.querySelector('[name="self_assessment"]')?.remove();}
+form.addEventListener('submit',e=>{e.preventDefault();if(!form.reportValidity())return;answers=Object.fromEntries(new FormData(form));current=recommend(answers);result.hidden=false;render();result.focus();result.scrollIntoView({behavior:'smooth',block:'center'});});
 function syncAudience(){const child=form.elements.audience.value==='kids';form.querySelectorAll('[data-assessment-group]').forEach(group=>{const hide=group.dataset.assessmentGroup===(child?'adult':'child');group.hidden=hide;group.querySelectorAll('select').forEach(sel=>{sel.disabled=hide;});});}
 form.addEventListener('change',()=>{clear();syncAudience();});form.addEventListener('reset',()=>{clear();setTimeout(syncAudience,0);});
 syncAudience();
-document.getElementById('assessment-register').addEventListener('click',()=>{if(!current)return;course.value=current.course;course.dispatchEvent(new Event('change',{bubbles:true}));if(track&&!track.disabled)track.value=current.track;let field=registration.querySelector('[name="self_assessment"]');if(!field){field=document.createElement('input');field.type='hidden';field.name='self_assessment';registration.appendChild(field);}field.value=summary();document.getElementById('student-name')?.focus({preventScroll:true});});
-render();
-new MutationObserver(render).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
+document.getElementById('assessment-register').addEventListener('click',()=>{if(!current)return;course.value=current.course;course.dispatchEvent(new Event('change',{bubbles:true}));if(track&&!track.disabled)track.value=current.track;document.getElementById('student-name')?.focus({preventScroll:true});});
+render();new MutationObserver(render).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
 })();
-
